@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
 	# Latest posts index
 	def latest
+		@latest_posts = Post.order("created_at DESC")
 		@user = current_user
 		@post = current_user.posts.new
 	end
@@ -24,7 +25,7 @@ class PostsController < ApplicationController
 
 	def create
 		@post = current_user.posts.create(post_params)
-		redirect_to @post
+		redirect_to root_path
 	end
 
 	def update

@@ -11,13 +11,13 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="inactive">
-          <a href="#" class="button" style="margin-top: 13px">post an item</a>
+          <%= link_to "post an item", new_user_post_path(current_user), class:'button', style:'margin-top: 13px'  %>
         </li>
         <!-- <li class="divider"></li> -->
         <li class="inactive"><a href="#">top</a></li>
         <li class="active"><a href="#">latest</a></li>
         <li class="has-dropdown">
-          <a href="#">Paula Abdul</a>
+          <a href="#"><% current_user.full_name %></a>
           <ul class="dropdown">
             <li><a href="#">Account Settings</a></li>
             <li><a href="#">Log out</a></li>
