@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
 
+
+
 	# Latest posts index
 	def latest
-		
+		@user = current_user
+		@post = current_user.posts.new
 	end
 
 	# Top posts index
@@ -11,7 +14,8 @@ class PostsController < ApplicationController
 	end
 
 	def new
-		
+		@user = current_user
+		@post = current_user.posts.new
 	end
 
 	def show
@@ -19,7 +23,8 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		
+		@post = current_user.posts.create(post_params)
+		redirect_to @post
 	end
 
 	def update
@@ -28,6 +33,12 @@ class PostsController < ApplicationController
 
 	def delete
 		
+	end
+
+	private
+
+	def post_params
+		params.require(:post).permit(:user_id, :price, :description, :picture)
 	end
 
 end

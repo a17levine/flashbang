@@ -1,0 +1,6 @@
+<%= form_for [@user, @post] do |f| %>
+  <%= f.number_field :price %>
+  <%= f.text_area :description %>
+  <%= f.file_field :picture %>
+  <%= f.submit "Create" %>
+<% end %>
