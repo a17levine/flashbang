@@ -1,10 +1,11 @@
 <div class='contain-to-grid'>
   <nav class="top-bar" data-topbar>
     <ul class="title-area">
-      <li class="name" >
-        <%= image_tag 'logo.png', width: '180'%>
-       <!--  <h1><a href="#">flashbang</a></h1> -->
-      </li>
+      <a href="<%= root_path %>">
+        <li class="name" >
+          <%= image_tag 'logo.png', width: '180'%>
+        </li>
+      </a>
     </ul>
 
     <section class="top-bar-section">
@@ -20,7 +21,7 @@
           <a href="#"><% current_user.full_name %></a>
           <ul class="dropdown">
             <li><a href="#">Account Settings</a></li>
-            <li><a href="#">Log out</a></li>
+            <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
           </ul>
         </li>
       </ul>
