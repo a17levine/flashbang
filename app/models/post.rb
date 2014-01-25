@@ -6,10 +6,10 @@ class Post < ActiveRecord::Base
 	before_save :update_score
 
 	def init_score
-		self.score = Math::log(100)
+		# self.score = Math::log(100)
 	end
 
 	def update_score
-		self.score = Math::log(100 / (Time.now - self.created_at))
+		# self.score = Math::log(100 / (Time.now - self.created_at))
 	end
 end
