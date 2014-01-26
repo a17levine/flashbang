@@ -6,6 +6,8 @@ Flashbang::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'posts#latest'
 
+  get 'posts/:id' => 'posts#show', :as => "post"
+
   resources :users do
     resources :posts  
   end

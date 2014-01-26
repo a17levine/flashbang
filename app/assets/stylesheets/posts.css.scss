@@ -11,13 +11,21 @@ footer {
   bottom: 0;
 }
 
+// post listings (latest,top) page ---------------------------
+
 .post {
 	// width: 400px;
 	margin-bottom: 30px;
+	float: left !important;
 } 
 
+// new post page ---------------------------
 
-// form styles
+.new-post-header {
+	margin-top: 25px;
+}
+
+			// form styles -----------------------------
 
 #post_price {
  width: 77px;
@@ -27,18 +35,9 @@ footer {
 	width: 390px;
 }
 
-// .latest-posts {
-// 	background-image: -webkit-gradient(
-// 	linear,
-// 	left top,
-// 	left bottom,
-// 	color-stop(0, #CCCFFF),
-// 	color-stop(1, #FF61C8)
-// );
-// background-image: -o-linear-gradient(bottom, #CCCFFF 0%, #FF61C8 100%);
-// background-image: -moz-linear-gradient(bottom, #CCCFFF 0%, #FF61C8 100%);
-// background-image: -webkit-linear-gradient(bottom, #CCCFFF 0%, #FF61C8 100%);
-// background-image: -ms-linear-gradient(bottom, #CCCFFF 0%, #FF61C8 100%);
-// background-image: linear-gradient(to bottom, #CCCFFF 0%, #FF61C8 100%);
-// }
+// show post page ---------------------------
+
+.show-picture {
+	width: 300px;
+}
 
