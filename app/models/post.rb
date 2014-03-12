@@ -1,5 +1,7 @@
 class Post < ActiveRecord::Base
 	belongs_to :user
+	acts_as_taggable
+	
 	validates_presence_of :user_id
 	mount_uploader :picture, PostPhotoUploader
 	before_create :init_score
