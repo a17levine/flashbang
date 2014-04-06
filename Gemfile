@@ -6,11 +6,14 @@ group :development do
 	gem 'sqlite3'
 	gem 'pry'
 	gem 'quiet_assets'
-	gem 'rspec-rails'
 end
 
 group :production do
 	gem 'pg'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
 end
 
 group :doc do
