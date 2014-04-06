@@ -1,5 +1,8 @@
 $(".new_post").ready(function() {
   $("#mytags").tagit({
+
+  // // This is for AJAX stuff - not there yet
+
   //   tagSource: function(search, showChoices) {
   //     var that = this;
   //     $.ajax({
