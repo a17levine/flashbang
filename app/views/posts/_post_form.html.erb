@@ -1,7 +1,10 @@
 <%= form_for [@user, @post] do |f| %>
+	<p style="margin-top:101px">1. upload image</p>
   <%= f.file_field :picture, accept: 'image/png,image/jpeg' %>
+  <p>2. add price</p>
   <%= f.text_field :price,placeholder: "price" %>
   <%= f.hidden_field :tags %>
+  <p>3. add tags: ex. (bike, fuji, roadbike)</p>
   <ul id="mytags">
   	
   </ul>
