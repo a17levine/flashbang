@@ -1,4 +1,4 @@
-$(".new_post").ready(function() {
+$("#mytags").ready(function() {
   $("#mytags").tagit({
 
   // // This is for AJAX stuff - not there yet
