@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require foundation
+//= require tag-it
 //= require turbolinks
+//= require tagging
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

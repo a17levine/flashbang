@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require foundation_and_overrides
-
+ *= require jquery.ui.all
+ *= require jquery.tagit
  *= require_tree .
  */

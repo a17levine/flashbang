@@ -1,6 +1,10 @@
 <%= form_for [@user, @post] do |f| %>
   <%= f.file_field :picture, accept: 'image/png,image/jpeg' %>
   <%= f.text_field :price,placeholder: "price" %>
+  <%= f.hidden_field :tags %>
+  <ul id="mytags">
+  	<li>Tag1</li>
+  </ul>
   <%= f.text_area :description, placeholder: "optional description" %>
   <%= f.submit "post" %>
 <% end %>
