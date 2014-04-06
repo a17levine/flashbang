@@ -16,7 +16,7 @@ end
 
 
 
-# purgatory 
+# purgatory -----------------
 
 # before_create :init_score
 # before_save :update_score
