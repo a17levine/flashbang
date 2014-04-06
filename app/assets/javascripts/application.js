@@ -15,6 +15,7 @@
 //= require jquery.ui.all
 //= require foundation
 //= require tag-it
+//= require turbolinks
 //= require tagging
 //= require_tree .
 
