@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
 	acts_as_taggable
 	
 	validates_presence_of :user_id
+	validates_presence_of :picture
 	mount_uploader :picture, PostPhotoUploader
 	# before_create :init_score
 	# before_save :update_score
