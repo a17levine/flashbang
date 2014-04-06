@@ -1,5 +1,22 @@
 <%= render "shared/navbar" %>
 
 <div class='row'>
-	<%= image_tag @post.picture, :class => 'show-picture'  %>
+	<div class='small-centered columns'>
+		<%= image_tag @post.picture, :class => 'show-picture'  %>
+	</div>
 </div>
+
+<div class="row tag-box">
+
+	<ul id="mytags" class="tagit ui-widget ui-widget-content ui-corner-all show-tags">
+		<% @post.tags.each do |p| %>
+	    <li class= "tagit-choice ui-widget-content ui-state-default ui-corner-all">
+	    	<span class="tagit-label"><%= p.name  %></span>
+	  	</li>
+  	<% end %>
+  </ul>
+</div>
+
+<div class='row'>
+	<h2>listed price $<%= @post.price %></h2>
+</div>	

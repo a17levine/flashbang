@@ -25,6 +25,19 @@ footer {
 	margin-top: 25px;
 }
 
+.tagit-choice {
+	background: #DFDFF6 !important;
+	border: 1px solid #D9DBDD !important;
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+	margin-left: 6px !important;
+	border-radius: 0em !important;
+}
+
+.tagit-label {
+	margin-right: 4px;
+}
+
 			// form styles -----------------------------
 
 #post_price {
@@ -39,17 +52,31 @@ footer {
 
 .show-picture {
 	width: 300px;
+	display: block;
+	margin: 0 auto;
 }
 
-.tagit-choice {
-	background: #DFDFF6 !important;
-	border: 1px solid #D9DBDD !important;
-	margin-top: 10px !important;
-	margin-bottom: 10px !important;
-	margin-left: 6px !important;
-	border-radius: 0em !important;
+.show-tags {
+	display: inline-block;
+	margin: 0 auto;
+	border: none;
+
+	.ui-autocomplete-input {
+		display: none;
+	}
 }
 
-.tagit-label {
-	margin-right: 4px;
+.show-tags li {
+
+	padding-right: 10px !important;
+
+	.ui-icon {
+		display:none;
+		margin: 0px;
+	}
+
+	.tagit-label {
+		margin: 0px;
+	}
+
 }
