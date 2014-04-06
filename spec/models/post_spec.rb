@@ -20,4 +20,10 @@ describe Post do
 		expect(Post.new(:tags => [])).to have(1).errors_on(:tags)
 	end
 
+	it "only has lowercase tags"  do
+		post = Post.new()
+		post.tag_list.add("UPPERCASETAG")
+		expect(post.tag_list.first).to eq("uppercasetag")
+	end
+
 end
