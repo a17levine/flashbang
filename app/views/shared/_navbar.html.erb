@@ -11,11 +11,11 @@
     <section class="top-bar-section">
       <!-- Right Nav Section -->
       <ul class="right">
-        <li class="inactive">
+        <li class="inactive" style="margin-right:20px">
           <%= link_to "post an item", new_user_post_path(current_user), class:'button', style:'margin-top: 13px'  %>
         </li>
         <!-- <li class="divider"></li> -->
-        <li class="inactive"><a href="#">top</a></li>
+        <!-- <li class="inactive"><a href="#">top</a></li> -->
         <li class="active"><%= link_to 'latest', root_path %></li>
         <li class="has-dropdown">
           <a href="#"><% current_user.full_name %></a>
