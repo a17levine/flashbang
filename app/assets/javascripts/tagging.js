@@ -3,7 +3,8 @@ var tags = [];
 var updateHiddenInputWithTagChange = function (event, ui) {
   var tags = [];
   $(".tagit-label").each(function(i,v){tags.push($(v).text())})
-  $("#post_tags").attr("value", JSON.stringify(tags));
+  $("#post_tag_list").attr("value", tags.toString());
+  console.log($("#post_tag_list").attr("value"))
 };
 
 

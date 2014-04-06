@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
 	
 	validates_presence_of :user_id
 	validates_presence_of :picture
-	validates_presence_of :tags
+	validates_presence_of :tag_list
 	mount_uploader :picture, PostPhotoUploader
 end
 
