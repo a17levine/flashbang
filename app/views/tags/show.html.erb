@@ -1,6 +1,8 @@
 <%= render "shared/navbar" %>
+<div class="">
+	<h1 class='large-offset-3'># <%= @tag %></h1>	
+</div>
 
-<h1>*! <%= @tag %></h1>
 
 <% @posts_with_tag.each do |p| %>
 	<div class='columns large-5 large-offset-3 post'>
