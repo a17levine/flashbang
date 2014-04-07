@@ -1,4 +1,7 @@
 <%= render "shared/navbar" %>
+
+<% provide(:title, "##{@tag}") %>
+
 <div>
 	<h1 class='large-offset-3'># <%= @tag %></h1>	
 </div>

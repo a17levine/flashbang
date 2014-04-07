@@ -1,5 +1,7 @@
 <%= render "shared/navbar" %>
 
+<% provide(:title, "$#{@post.price} #{@post.tags.first.name}...") %>
+
 <div class='row'>
 	<div>
 		<h2 class="large-offset-3">listed price $<%= @post.price %></h2>	
@@ -13,7 +15,6 @@
 </div>
 
 <div class="row tag-box">
-
 	<ul id="mytags" class="tagit ui-widget ui-widget-content ui-corner-all show-tags">
 		<% @post.tags.each do |t| %>
 			<%= link_to(tag_path(t.name)) do %>
