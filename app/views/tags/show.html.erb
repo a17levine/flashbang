@@ -1,0 +1,14 @@
+<%= render "shared/navbar" %>
+
+<h1>*! <%= @tag %></h1>
+
+<% @posts_with_tag.each do |p| %>
+	<div class='columns large-5 large-offset-3 post'>
+		<a href="<%= post_path(p.id) %>"><%= image_tag p.picture %></a>
+		<h4>$<%= p.price  %>
+			<br>	
+			<small>1 offer // 2 comments - posted <%= time_ago_in_words(p.created_at).gsub('about','') %> ago</small>
+		</h4>
+	</div>
+
+<% end %>

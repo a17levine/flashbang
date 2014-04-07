@@ -11,7 +11,28 @@ Flashbang::Application.routes.draw do
   resources :users do
     resources :posts  
   end
+
+  get 'tag/:name' => 'tags#show'
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
