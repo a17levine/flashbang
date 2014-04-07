@@ -12,7 +12,7 @@ Flashbang::Application.routes.draw do
     resources :posts  
   end
 
-  get 'tag/:name' => 'tags#show'
+  get 'tag/:name' => 'tags#show', :as => "tag"
   
 
 

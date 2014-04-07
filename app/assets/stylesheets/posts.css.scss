@@ -68,9 +68,10 @@ footer {
 	}
 }
 
-.show-tags li {
+.show-tags a li {
 
 	padding-right: 10px !important;
+	padding-left: 10px !important;
 
 	.ui-icon {
 		display:none;
