@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$tag-background-color: #D0F5D6;
+
 footer {
   // @include panel($panel-color, $panel-padding);
   width: 100%;
@@ -26,7 +28,7 @@ footer {
 }
 
 .tagit-choice {
-	background: #DFDFF6 !important;
+	background: $tag-background-color !important;
 	border: 1px solid #D9DBDD !important;
 	margin-top: 10px !important;
 	margin-bottom: 10px !important;
