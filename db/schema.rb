@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413200525) do
+ActiveRecord::Schema.define(version: 20140413225521) do
 
   create_table "comments", force: true do |t|
     t.string   "text"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20140413200525) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "offers", force: true do |t|
+    t.integer  "amount"
+    t.boolean  "accepted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_id"
+    t.integer  "user_id"
+  end
+
+  add_index "offers", ["post_id"], name: "index_offers_on_post_id"
+  add_index "offers", ["user_id"], name: "index_offers_on_user_id"
 
   create_table "posts", force: true do |t|
     t.datetime "created_at"
