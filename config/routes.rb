@@ -9,7 +9,9 @@ Flashbang::Application.routes.draw do
   get 'posts/:id' => 'posts#show', :as => "post"
 
   resources :users do
-    resources :posts  
+    resources :posts do
+      resources :comments #, :only => [:create]
+    end
   end
 
   get 'tag/:name' => 'tags#show', :as => "tag"

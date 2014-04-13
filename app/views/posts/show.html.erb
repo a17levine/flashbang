@@ -25,3 +25,19 @@
   	<% end %>
   </ul>
 </div>
+
+<div class="row comment-post">
+	<%= form_for [@user, @post, @comment] do |f| %>
+		<%= f.text_field :text %>
+		<%= f.submit "Create" %>
+	<% end %>
+</div>
+
+<div class="row comments">
+	<% @post.comments.each do |c| %>
+		<div class="row comment">
+			<%#= c.user.first_name %>
+			<%= c.text %>
+		</div>
+	<% end %>
+</div>
