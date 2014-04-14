@@ -15,7 +15,6 @@
 
 * a private network (UT Austin)
 * tagging & following tags
-* making offers
 * simply coordinating the transfer of goods
 * extremely fast item posting
 * knowledge of top tags being followed so you can post those items
