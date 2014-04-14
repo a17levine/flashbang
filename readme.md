@@ -9,11 +9,11 @@
 [][][][][] ................ [][][][]
 ```
 
-flashbang is an instagram-style person-to-person marketplace
+## flashbang is an instagram-style person-to-person marketplace
 
-key features of flashbang are
+### key features of flashbang are
 
-* private network
+* a private network (UT Austin)
 * tagging & following tags
 * making offers
 * simply coordinating the transfer of goods
