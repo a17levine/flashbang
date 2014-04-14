@@ -17,4 +17,4 @@
 * tagging & following tags
 * simply coordinating the transfer of goods
 * extremely fast item posting
-* knowledge of top tags being followed so you can post those items
+* knowledge of top tags being followed so users can post those items
