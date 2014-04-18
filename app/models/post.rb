@@ -10,12 +10,18 @@ class Post < ActiveRecord::Base
 	validates_presence_of :tag_list
 	mount_uploader :picture, PostPhotoUploader
 
+	before_save :cleanup_tags
 
 	# shows price in $899 format instead of 899
 	def price_human
 		"$#{self.price}"
 	end
 
+	private
+
+	def cleanup_tags
+		self.tag_list.map! { |tag| tag.downcase.gsub(/#/, '') }
+	end
 end
 
 

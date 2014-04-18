@@ -19,7 +19,7 @@
 		<% @post.tags.each do |t| %>
 			<%= link_to(tag_path(t.name)) do %>
 		    <li class= "tagit-choice ui-widget-content ui-state-default ui-corner-all">
-		    	<span class="tagit-label"><%= t.name  %></span>
+		    	<span class="tagit-label">#<%= t.name  %></span>
 		  	</li>
 		  <% end %>
   	<% end %>
