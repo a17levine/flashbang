@@ -353,7 +353,10 @@
 
         _cleanedInput: function() {
             // Returns the contents of the tag input, cleaned and ready to be passed to createTag
-            return $.trim(this.tagInput.val().replace(/^"(.*)"$/, '$1'));
+            // Modified line 358 so that we can remove number signs from tags on line 359
+            //      --nick
+            cleanedTagInput = $.trim(this.tagInput.val().replace(/^"(.*)"$/, '$1'));
+            return cleanedTagInput.replace(/#/g, '');
         },
 
         _lastTag: function() {
@@ -470,7 +473,11 @@
             var label = $(this.options.onTagClicked ? '<a class="tagit-label"></a>' : '<span class="tagit-label"></span>').text(value);
 
             // Create tag.
-            var tag = $('<li></li>')
+            // I added the number sign on line 474 so that tags are viewed as actual hashtags.
+            // The number sign is not entered as part of the actual tag itself and so it wont
+            // appear in the db.  There will be extra code on the back end to gaurantee this.
+            //      --nick
+            var tag = $('<li>#</li>')
                 .addClass('tagit-choice ui-widget-content ui-state-default ui-corner-all')
                 .addClass(additionalClass)
                 .append(label);
