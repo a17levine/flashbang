@@ -11,6 +11,7 @@ Flashbang::Application.routes.draw do
   resources :users do
     resources :posts do
       resources :comments #, :only => [:create]
+      resources :offers #, :only => [:create]
     end
   end
 

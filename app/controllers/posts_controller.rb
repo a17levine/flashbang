@@ -28,6 +28,7 @@ class PostsController < ApplicationController
 		@comments = @post.comments
 		@comment = @post.comments.new
 		@user = current_user
+		@offer = Offer.new
 	end
 
 	def create
