@@ -18,7 +18,20 @@ class Post < ActiveRecord::Base
 	end
 
 	def max_offer
-		self.offers.order("amount DESC").first
+		if self.offers
+			self.offers.order("amount DESC").first
+		else
+			return nil
+		end
+	end
+
+	def max_offer_to_display
+		if self.max_offer
+			return "$#{self.max_offer.amount}"
+		else
+			return "No offers yet"
+		end
+		
 	end
 
 	private

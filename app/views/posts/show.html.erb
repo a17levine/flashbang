@@ -4,7 +4,7 @@
 
 <div class='row'>
 	<div>
-		<h2 class="large-offset-3">listed price $<%= @post.price %></h2>	
+		<h2 class="large-offset-3">listed price <%= number_to_currency(@post.price, precision: 0) %></h2>	
 	</div>
 </div>	
 
@@ -27,7 +27,7 @@
 </div>
 
 <div class="row">
-	<h1>Highest offer $<%= @post.max_offer.amount %></h1>
+	<h1>Highest offer: <%= @post.max_offer_to_display %></h1>
 	<a class="radius button" href="#" data-reveal-id="myModal">Make an Offer</a>
 
 	<div id="myModal" class="reveal-modal" data-reveal>
