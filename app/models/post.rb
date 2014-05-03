@@ -12,26 +12,12 @@ class Post < ActiveRecord::Base
 
 	before_save :cleanup_tags
 
-	# shows price in $899 format instead of 899
-	def price_human
-		"$#{self.price}"
-	end
-
 	def max_offer
 		if self.offers
 			self.offers.order("amount DESC").first
 		else
 			return nil
 		end
-	end
-
-	def max_offer_to_display
-		if self.max_offer
-			return "$#{self.max_offer.amount}"
-		else
-			return "No offers yet"
-		end
-		
 	end
 
 	private
