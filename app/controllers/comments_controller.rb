@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     #binding.pry
     comment_text = params[:comment][:text]
     post = Post.find(params[:post_id])
-    user_id = params[:user_id].to_i
+    user_id = current_user.id
     
     post.comments.create(user_id: user_id, text: comment_text)
     redirect_to post
