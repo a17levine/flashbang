@@ -16,6 +16,7 @@
 //= require foundation
 //= require tag-it
 //= require tagging
+//= require alertify
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

@@ -38,7 +38,7 @@
 
 	<div id="myModal" class="reveal-modal" data-reveal>
 	  <h2>Make an Offer</h2>
-	  <p class="lead">Current offer is: $56</p>
+	  <p class="lead">Highest offer is <%= number_to_currency(@post.max_offer.amount, precision: 0) %></p>
 	  <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
 	  <%= form_for [@user, @post, @offer] do |f| %>
 			<%= f.text_field :amount %>
