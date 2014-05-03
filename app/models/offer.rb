@@ -9,6 +9,14 @@ class Offer < ActiveRecord::Base
   before_create { |offer| offer.accepted = false; true }
 
 
+  # def accept_offer
+  #   self.accepted = true
+  # end
+
+
+
+  private
+
   def must_be_highest_offer
     amount = self.amount
     post = Post.find(self.post_id)
