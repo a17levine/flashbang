@@ -8,7 +8,7 @@ class OffersController < ApplicationController
     user_id = current_user.id
     post = Post.find(params[:post_id])
 
-    offer = post.offers.new(user_id: user_id, amount: amount)
+    offer = post.offers.new(user_id: user_id, amount: amount, accepted:false)
 
     if offer.save
       redirect_to post, success: "Your offer was sent!"

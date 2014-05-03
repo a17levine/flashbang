@@ -17,6 +17,10 @@ class Post < ActiveRecord::Base
 		"$#{self.price}"
 	end
 
+	def max_offer
+		self.offers.order("amount DESC").first
+	end
+
 	private
 
 	def cleanup_tags
