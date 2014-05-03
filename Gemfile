@@ -32,5 +32,6 @@ gem 'carrierwave'
 gem 'acts-as-taggable-on'
 # gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'money-rails'
 
 
