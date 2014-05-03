@@ -5,4 +5,6 @@ class Offer < ActiveRecord::Base
   validates_presence_of :user_id, :amount
   validates :amount, :numericality => { :greater_than => 0, :integer => true }
 
+  before_create {|offer| offer.accepted = false; true}
+
 end
