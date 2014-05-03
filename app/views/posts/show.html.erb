@@ -27,7 +27,13 @@
 </div>
 
 <div class="row">
-	<h1>Highest offer: <%= @post.max_offer_to_display %></h1>
+
+	<% if @post.max_offer %>
+		<h1>Highest offer: <%= number_to_currency(@post.max_offer.amount, precision: 0) %></h1>	
+	<% else %>	
+		<h1>No offers yet</h1>
+	<% end %>
+	
 	<a class="radius button" href="#" data-reveal-id="myModal">Make an Offer</a>
 
 	<div id="myModal" class="reveal-modal" data-reveal>
