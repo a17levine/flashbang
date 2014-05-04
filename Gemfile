@@ -6,6 +6,8 @@ group :development do
 	gem 'sqlite3'
 	gem 'pry'
 	gem 'quiet_assets'
+	gem 'better_errors'
+	gem 'binding_of_caller'
 end
 
 group :production do
@@ -32,6 +34,5 @@ gem 'carrierwave'
 gem 'acts-as-taggable-on'
 # gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'money-rails'
 
 
