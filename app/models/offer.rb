@@ -4,10 +4,10 @@ class Offer < ActiveRecord::Base
 
   validates_presence_of :user_id, :amount
   validates :amount, :numericality => { :greater_than => 0, :integer => true }
-  validate :must_be_highest_offer
+  # validate :must_be_highest_offer
 
-  before_create { |offer| offer.accepted = false; true }
-
+  before_create :set_accepted_false
+  before_save :must_be_highest_offer
 
   # def accept_offer
   #   self.accepted = true
@@ -16,6 +16,11 @@ class Offer < ActiveRecord::Base
 
 
   private
+
+  def set_accepted_false
+    self.accepted = false
+    true
+  end
 
   def must_be_highest_offer
     amount = self.amount
