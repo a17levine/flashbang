@@ -13,7 +13,9 @@
 
   <body>
     <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
+      <script>
+        flashbangAlerts = <%= flash.to_json.html_safe %>;
+      </script>
     <% end -%>
 
     <%= yield %>

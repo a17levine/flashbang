@@ -17,6 +17,7 @@
 //= require tag-it
 //= require tagging
 //= require alertify
+//= requre notificationsWithAlertifyJs
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

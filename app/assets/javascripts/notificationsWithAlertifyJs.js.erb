@@ -1,0 +1,27 @@
+
+if (window.flashbangAlerts){
+	for (var i=0;i<window.flashbangAlerts.length;i++) { 
+		// get the type of alert
+		var typeOfAlert = window.flashbangAlerts[i][0]; // notice, alert, or error
+		// get the body of alert
+		var messageBody = window.flashbangAlerts[i][1];
+		
+		// fire the function
+
+		switch (typeOfAlert){
+			case "error":
+			  alertify.error(messageBody);
+			  break;
+			case "alert":
+			  alertify.log(messageBody);
+			  break;
+			case "notice":
+				alertify.success(messageBody);
+				break;
+			default:
+			  alertify.log(messageBody);
+			  break;
+		}
+	}
+}
+

@@ -15,7 +15,8 @@ class OffersController < ApplicationController
     if offer.save
       redirect_to post, success: "Your offer was sent!"
     else
-      redirect_to post, alert: "There was a problem sending your offer."
+      redirect_to post, :flash => { :error => "There was a problem submitting your offer" }
+      # binding.pry
     end
   end
 
