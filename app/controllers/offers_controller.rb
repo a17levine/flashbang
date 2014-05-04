@@ -8,7 +8,10 @@ class OffersController < ApplicationController
     user_id = current_user.id
     post = Post.find(params[:post_id])
 
-    # offer = post.offers.new(user_id: user_id, amount: amount, accepted:false)
+    if current_user == post.highest_bidder
+      redirect_to post, :flash => { :error => "You are already the highest bidder!" }
+      return false
+    end
 
     offer = post.offers.new(user_id: user_id, amount: amount)
 
