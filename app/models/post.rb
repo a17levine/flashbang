@@ -20,6 +20,21 @@ class Post < ActiveRecord::Base
 		end
 	end
 
+	def highest_bidder
+		User.find(self.user_id)
+	end
+
+	def meta_data
+		offer_count = self.offers.count
+		comment_count = self.comments.count
+
+		{
+			offer_count: offer_count,
+			comment_count: comment_count,
+		}
+	end
+
+
 	private
 
 	def cleanup_tags
