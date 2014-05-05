@@ -1,18 +1,19 @@
 <% post_data = post.meta_data %>
 <div class='columns large-5 large-offset-3 post'>
-	<a href="<%= post_path(post.id) %>"><%= image_tag post.picture %></a>
-	<h4><%=  number_to_currency(post.price, precision: 0)  %>
-		<br>	
-			<small>
-				<%= "#{pluralize(post_data[:offer_count], 'offer') }" %> 
-				<% if post.max_offer %>
-					(<%= number_to_currency(post.max_offer.amount, precision: 0) %>)
-				<% end %>
+	<a href="<%= post_path(post.id) %>"><%= image_tag post.picture %>
+		<h4><%=  number_to_currency(post.price, precision: 0)  %>
+			<br>	
+				<small>
+					<%= "#{pluralize(post_data[:offer_count], 'offer') }" %> 
+					<% if post.max_offer %>
+						(<%= number_to_currency(post.max_offer.amount, precision: 0) %>)
+					<% end %>
 
 
-				 // 
-				<%= "#{pluralize(post_data[:comment_count], 'comment')}" %> - posted 
-				<%= time_ago_in_words(post.created_at).gsub('about','') %> ago
-			</small>
-	</h4>
+					 // 
+					<%= "#{pluralize(post_data[:comment_count], 'comment')}" %> - posted 
+					<%= time_ago_in_words(post.created_at).gsub('about','') %> ago
+				</small>
+		</h4>
+	</a>
 </div>
