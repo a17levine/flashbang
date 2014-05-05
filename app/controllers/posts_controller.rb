@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
 	def create
 		@post = current_user.posts.create(post_params)
-		redirect_to root_path
+		redirect_to post_path(@post), :flash => { :notice => "post uploaded successfully" }
 	end
 
 	def update
