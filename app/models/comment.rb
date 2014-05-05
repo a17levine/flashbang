@@ -7,6 +7,6 @@ class Comment < ActiveRecord::Base
   private
 
   def check_for_empty_string
-    self.gsub(/\s/, '') != ''
+    self.text.gsub(/\s/, '') != ''
   end
 end
