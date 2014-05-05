@@ -8,18 +8,12 @@ class OffersController < ApplicationController
     user_id = current_user.id
     post = Post.find(params[:post_id])
 
-    if current_user == post.highest_bidder
-      redirect_to post, :flash => { :error => "You are already the highest bidder!" }
-      return false
-    end
-
     offer = post.offers.new(user_id: user_id, amount: amount)
 
     if offer.save
-      redirect_to post, success: "Your offer was sent!"
+      redirect_to post, :flash => { :notice => "offer of $#{amount} submitted successfully" }
     else
-      redirect_to post, :flash => { :error => "Offer invalid and not placed. Try again." }
-      # binding.pry
+      redirect_to post, :flash => { :error => "offer invalid and not placed. Try again." }
     end
   end
 

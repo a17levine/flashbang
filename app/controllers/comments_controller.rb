@@ -5,7 +5,12 @@ class CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     user_id = current_user.id
     
-    post.comments.create(user_id: user_id, text: comment_text)
-    redirect_to post
+    comment = post.comments.new(user_id: user_id, text: comment_text)
+
+    if comment.save
+    	redirect_to post, :flash => { :notice => "comment posted successfully" }
+    else
+    	redirect_to post, :flash => { :error => "comment invalid" }
+    end
   end
 end
