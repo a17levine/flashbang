@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     comment = post.comments.new(user_id: user_id, text: comment_text)
 
     if comment.save
-    	redirect_to post, :flash => { :notice => "comment posted successfully" }
+    	redirect_to post, :flash => { :notice => "comment posted" }
     else
     	redirect_to post, :flash => { :error => "comment invalid" }
     end
