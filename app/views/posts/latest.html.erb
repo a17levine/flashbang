@@ -7,15 +7,6 @@
 		<h1 class="large-offset-3">latest posts</h1>	
 	</div>
 
-	<% @latest_posts.each do |p| %>
-	<% post_data = p.meta_data %>
-	<div class='columns large-5 large-offset-3 post'>
-		<a href="<%= post_path(p.id) %>"><%= image_tag p.picture %></a>
-		<h4>$<%= p.price  %>
-			<br>	
-			<small><%= post_data[:offer_count] %> offers // <%= post_data[:comment_count] %> comments - posted <%= time_ago_in_words(p.created_at).gsub('about','') %> ago</small>
-		</h4>
-	</div>
-
-	<% end %>
+	<%= render partial: "post", collection: @latest_posts %>
+	
 </div>

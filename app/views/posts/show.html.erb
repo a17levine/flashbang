@@ -28,29 +28,19 @@
 
 <div class="row">
 
-	<% if @post.max_offer %>
-		<h1>Highest offer: <%= number_to_currency(@post.max_offer.amount, precision: 0) %></h1>	
+	<% if offers_been_made? %>
+		<h1>Best offer: <%= number_to_currency(@post.max_offer.amount, precision: 0) %></h1>	
 	<% else %>	
 		<h1>No offers yet</h1>
 	<% end %>
 	
 	<a class="radius button" id="offerButton" href="#" data-reveal-id="offerModal">Make an Offer</a>
 
-<!-- Offer Modal ------------------------------------------------------- -->
+<!-- Offer Modal -->
 
-	<div id="offerModal" class="reveal-modal" data-reveal>
-	  <h2>Make an Offer</h2>
-	  <p class="lead">Highest offer is <%= number_to_currency(@post.max_offer.amount, precision: 0) %></p>
-	  <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
-	  <%= form_for [@user, @post, @offer] do |f| %>
-			<%= f.text_field :amount, id: 'offerEntryField' %>
-			<%= f.submit "Offer" %>
-		<% end %>
-	  <a class="close-reveal-modal">&#215;</a>
-	</div>
-</div>
+<%= render "shared/offer_modal" %>
 
-<!-- End of Offer Modal ------------------------------------------------------- -->
+<!-- End of Offer Modal  -->
 
 <div class="row comment-post">
 	<%= form_for [@user, @post, @comment] do |f| %>
