@@ -34,23 +34,27 @@
 		<h1>No offers yet</h1>
 	<% end %>
 	
-	<a class="radius button" href="#" data-reveal-id="myModal">Make an Offer</a>
+	<a class="radius button" id="offerButton" href="#" data-reveal-id="offerModal">Make an Offer</a>
 
-	<div id="myModal" class="reveal-modal" data-reveal>
+<!-- Offer Modal ------------------------------------------------------- -->
+
+	<div id="offerModal" class="reveal-modal" data-reveal>
 	  <h2>Make an Offer</h2>
 	  <p class="lead">Highest offer is <%= number_to_currency(@post.max_offer.amount, precision: 0) %></p>
 	  <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
 	  <%= form_for [@user, @post, @offer] do |f| %>
-			<%= f.text_field :amount %>
+			<%= f.text_field :amount, id: 'offerEntryField' %>
 			<%= f.submit "Offer" %>
 		<% end %>
 	  <a class="close-reveal-modal">&#215;</a>
 	</div>
 </div>
 
+<!-- End of Offer Modal ------------------------------------------------------- -->
+
 <div class="row comment-post">
 	<%= form_for [@user, @post, @comment] do |f| %>
-		<%= f.text_field :text %>
+		<%= f.text_field :text, :autofocus => true %>
 		<%= f.submit "Comment" %>
 	<% end %>
 </div>
