@@ -14,5 +14,6 @@
  *= require jquery.tagit
  *= require alertify.core.css
  *= require alertify.default.css
+ *= require alertify_overrides
  *= require_tree .
  */
