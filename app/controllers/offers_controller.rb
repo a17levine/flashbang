@@ -18,7 +18,7 @@ class OffersController < ApplicationController
     if offer.save
       redirect_to post, success: "Your offer was sent!"
     else
-      redirect_to post, :flash => { :error => "There was a problem submitting your offer" }
+      redirect_to post, :flash => { :error => "Offer invalid and not placed. Try again." }
       # binding.pry
     end
   end
