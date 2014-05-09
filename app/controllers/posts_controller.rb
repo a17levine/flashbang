@@ -5,12 +5,8 @@ class PostsController < ApplicationController
 	# Latest posts index
 	def latest
 		@latest_posts = Post.order("created_at DESC")
-		# if current_user
 		@user = current_user
 		@post = current_user.posts.new
-		# else
-		# 	redirect_to new_user_session_path
-		# end
 	end
 
 	# Top posts index
