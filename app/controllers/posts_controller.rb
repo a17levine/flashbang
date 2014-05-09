@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
 	# Latest posts index
 	def latest
-		@latest_posts = Post.order("created_at DESC")
+		@latest_posts = Post.where(active: true).order("created_at DESC")
 		@user = current_user
 		@post = current_user.posts.new
 	end
