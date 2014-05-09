@@ -1,4 +1,4 @@
-	<div id="offerModal" class="reveal-modal" data-reveal>
+	<div id="offerModal" class="reveal-modal tiny" data-reveal>
 	  <h2>Make an Offer</h2>
 	  <% if offers_been_made? %>
 	  	<p class="lead">Best offer is <%= number_to_currency(@post.max_offer.amount, precision: 0) %></p>
