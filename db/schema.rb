@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413225521) do
+ActiveRecord::Schema.define(version: 20140509183531) do
 
   create_table "comments", force: true do |t|
     t.string   "text"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140413225521) do
     t.integer  "user_id"
     t.string   "picture"
     t.float    "score"
+    t.boolean  "active"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"

@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
 	mount_uploader :picture, PostPhotoUploader
 
 	before_save :cleanup_tags
+	before_create :set_post_as_active
 
 	def max_offer
 		if self.offers
@@ -36,6 +37,10 @@ class Post < ActiveRecord::Base
 
 
 	private
+
+	def set_post_as_active
+		self.active = true
+	end
 
 	def cleanup_tags
 		self.tag_list.map! { |tag| tag.downcase.gsub(/#/, '') }
