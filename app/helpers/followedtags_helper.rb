@@ -1,0 +1,2 @@
+module FollowedtagsHelper
+end
