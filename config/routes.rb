@@ -16,6 +16,5 @@ Flashbang::Application.routes.draw do
 
   get 'tag/:name' => 'tags#show', :as => "tag"
   get 'following' => 'followedtags#show', :as => "followed_tags"
-  get 'tag/:name' => 'tags#show', :as => "tag"
   
 end
