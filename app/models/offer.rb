@@ -9,9 +9,6 @@ class Offer < ActiveRecord::Base
   before_create :set_accepted_false
   before_create :must_be_highest_offer
 
-  # def accept_offer
-  #   self.accepted = true
-  # end
 
 
 

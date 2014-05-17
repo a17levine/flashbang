@@ -27,19 +27,23 @@
 </div>
 
 <div class="row">
-
-	<% if offers_been_made? %>
-		<h1>Best offer: <%= number_to_currency(@post.max_offer.amount, precision: 0) %></h1>	
-	<% else %>	
-		<h1>No offers yet</h1>
-	<% end %>
-
-	<% if @post.user == current_user %>
-		<% if offers_been_made? %>
-			<a class="radius button" id="AcceptOfferButton" href="#">Click to accept offer of <%=  number_to_currency(@post.max_offer.amount, precision: 0) %></a>
-		<% end %>
+	<% if @post.offer_accepted? %>
+		<p>An offer has been accepted at <%= number_to_currency(@post.max_offer.amount, precision: 0) %></p>
+		
 	<% else %>
-		<a class="radius button" id="offerButton" href="#" data-reveal-id="offerModal">Make an Offer</a>
+		<% if offers_been_made? %>
+			<h1>Best offer: <%= number_to_currency(@post.max_offer.amount, precision: 0) %></h1>	
+		<% else %>	
+			<h1>No offers yet</h1>
+		<% end %>
+
+		<% if @post.user == current_user %>
+			<% if offers_been_made? %>
+				<%= link_to( "Click to accept offer of #{number_to_currency(@post.max_offer.amount, precision: 0)}", accept_user_post_offer_path(@post.user, @post, @post.max_offer.id), {class: "radius button", id: "acceptOfferButton", :method => :get}) %>
+			<% end %>
+		<% else %>
+			<a class="radius button" id="offerButton" href="#" data-reveal-id="offerModal">Make an Offer</a>
+		<% end %>
 	<% end %>
 
 <!-- Offer Modal -->

@@ -17,18 +17,22 @@ class OffersController < ApplicationController
     end
   end
 
-  # def accept_offer
-  #   post = Post.find(params[:post_id])
-  #   post_owner = User.find(post.user_id)
+  def accept
+    puts "this just hit the accept action in the offers controller"
+    # binding.pry
+    post = Post.find(params[:post_id])
+    post_owner = User.find(post.user_id)
+    offer = Offer.find(params[:id])
 
-  #   if current_user == post_owner
-  #     offer = Offer.find(params[:offer_id])
-  #     offer.accept_offer
-  #     transfer = Transfer.new
-  #     redirect_to transfer
-  #   else
-  #     flash[:alert] = "You are not the owner of this post!"
-  #   end
-  # end
+    if current_user == post_owner
+      offer.accepted = true
+      offer.save
+      redirect_to post, :flash => { :notice => "offer accepted!" }
+    #   transfer = Transfer.new
+    #   redirect_to transfer
+    # else
+    #   flash[:alert] = "You are not the owner of this post!"
+    end
+  end
 
 end
