@@ -14,10 +14,8 @@ Flashbang::Application.routes.draw do
     end
   end
 
-
-  # post 'posts/:id/offers/:id' => 'offers#accept', :as => "tag_offer"
-
+  get 'tag/:name' => 'tags#show', :as => "tag"
+  get 'following' => 'followedtags#show', :as => "followed_tags"
   get 'tag/:name' => 'tags#show', :as => "tag"
   
-
 end
