@@ -33,8 +33,14 @@
 	<% else %>	
 		<h1>No offers yet</h1>
 	<% end %>
-	
-	<a class="radius button" id="offerButton" href="#" data-reveal-id="offerModal">Make an Offer</a>
+
+	<% if @post.user == current_user %>
+		<% if offers_been_made? %>
+			<a class="radius button" id="AcceptOfferButton" href="#">Click to accept offer of <%=  number_to_currency(@post.max_offer.amount, precision: 0) %></a>
+		<% end %>
+	<% else %>
+		<a class="radius button" id="offerButton" href="#" data-reveal-id="offerModal">Make an Offer</a>
+	<% end %>
 
 <!-- Offer Modal -->
 
