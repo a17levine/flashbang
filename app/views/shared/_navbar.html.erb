@@ -17,6 +17,7 @@
         <!-- <li class="divider"></li> -->
         <!-- <li class="inactive"><a href="#">top</a></li> -->
         <li class="active"><%= link_to 'latest', root_path %></li>
+        <li class=""><%= link_to 'following', followed_tags_path %></li>
         <li class="has-dropdown">
           <a href="#"><% current_user.full_name %></a>
           <ul class="dropdown">
