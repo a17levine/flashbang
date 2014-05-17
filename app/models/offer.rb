@@ -7,7 +7,7 @@ class Offer < ActiveRecord::Base
   # validate :must_be_highest_offer
 
   before_create :set_accepted_false
-  before_save :must_be_highest_offer
+  before_create :must_be_highest_offer
 
   # def accept_offer
   #   self.accepted = true

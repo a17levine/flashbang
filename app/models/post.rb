@@ -35,6 +35,15 @@ class Post < ActiveRecord::Base
 		}
 	end
 
+	def offer_accepted?
+		if self.offers.count == 0
+			false
+		else
+			self.offers.each {|o| return true if o.accepted == true}
+			false
+		end
+	end
+
 
 	private
 
