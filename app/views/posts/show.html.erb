@@ -52,18 +52,24 @@
 
 <!-- End of Offer Modal  -->
 
-<div class="row comment-post">
-	<%= form_for [@user, @post, @comment] do |f| %>
-		<%= f.text_field :text, :autofocus => true %>
-		<%= f.submit "Comment" %>
+<!-- Begin comments and comment posting  -->
+
+<div class="row comments">
+	<h3>Comments</h3>
+	<% @post.comments.each do |c| %>
+		<% unless c.id.nil? %>
+			<div class="row comment">
+				<%= c.text %>
+				<br>
+				-<%= c.user.first_name %>
+			</div>
+		<% end %>	
 	<% end %>
 </div>
 
-<div class="row comments">
-	<% @post.comments.each do |c| %>
-		<div class="row comment">
-			<%#= c.user.first_name %>
-			<%= c.text %>
-		</div>
+<div class="row comment-post" style="margin-top:30px">
+	<%= form_for [@user, @post, @comment] do |f| %>
+		<%= f.text_field :text, :autofocus => true %>
+		<%= f.submit "Comment" %>
 	<% end %>
 </div>

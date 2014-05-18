@@ -14,11 +14,12 @@
         <li class="inactive" style="margin-right:20px">
           <%= link_to "post an item", new_user_post_path(current_user), class:'button', style:'margin-top: 13px'  %>
         </li>
-        <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to 'latest', root_path %></li>
+        <li class="<%= 'active' if current_page?(latest_path) %>"><%= link_to 'latest', latest_path %></li>
         <li class="<%= 'active' if current_page?(followed_tags_path) %>"><%= link_to 'following', followed_tags_path %></li>
         <li class="has-dropdown" style="height:100%">
           <a href="#"><%= current_user.full_name %></a>
           <ul class="dropdown" id="nav-dropdown">
+            <li><a href="#">My Posts</a></li>
             <li><%= link_to "Account Settings", edit_user_registration_path %></li>
             <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
           </ul>

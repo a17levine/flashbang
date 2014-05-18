@@ -1,9 +1,11 @@
 Flashbang::Application.routes.draw do
   devise_for :users
 
-  root 'posts#latest'
+  root 'static_pages#home'
 
   get 'posts/:id' => 'posts#show', :as => "post"
+
+  get '/latest' => 'posts#latest'
 
   resources :users do
     resources :posts do
