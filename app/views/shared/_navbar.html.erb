@@ -16,9 +16,9 @@
         </li>
         <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to 'latest', root_path %></li>
         <li class="<%= 'active' if current_page?(followed_tags_path) %>"><%= link_to 'following', followed_tags_path %></li>
-        <li class="has-dropdown">
-          <a href="#"><% current_user.full_name %></a>
-          <ul class="dropdown">
+        <li class="has-dropdown" style="height:100%">
+          <a href="#"><%= current_user.full_name %></a>
+          <ul class="dropdown" id="nav-dropdown">
             <li><a href="#">Account Settings</a></li>
             <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
           </ul>
