@@ -15,7 +15,7 @@
           <%= link_to "post an item", new_user_post_path(current_user), class:'button', style:'margin-top: 13px'  %>
         </li>
         <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to 'latest', root_path %></li>
-        <li class="<%= 'active' if current_page?(followed_tags_patht) %>"><%= link_to 'following', followed_tags_path %></li>
+        <li class="<%= 'active' if current_page?(followed_tags_path) %>"><%= link_to 'following', followed_tags_path %></li>
         <li class="has-dropdown">
           <a href="#"><% current_user.full_name %></a>
           <ul class="dropdown">
