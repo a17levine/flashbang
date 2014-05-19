@@ -59,7 +59,7 @@
 	<% @post.comments.each do |c| %>
 		<% unless c.id.nil? %>
 			<div class="row comment">
-				<div class="comment-bubble">
+				<div class="comment-bubble-left">
 				  <div class="arrow-left"></div>
 				  <h3 class="comment-title"><%= c.user.first_name %></h3>
 				  <div class="comment-content">

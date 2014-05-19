@@ -94,26 +94,49 @@ footer {
   background: rgb(67, 74, 84) none repeat scroll 0% 0% / auto padding-box padding-box;
   border: 1px solid rgb(67, 74, 84);
   border-radius: 6px 6px 6px 6px;
-  margin: 10px 0px 0px 10px;
-  padding: 1px;
+  padding: 1px;  
 }
 
-.arrow-left {
+.comment-bubble-left {
+  @extend .comment-bubble;
+  margin: 10px 0px 0px 10px;
+  float: left;
+}
+
+.comment-bubble-right {
+  @extend .comment-bubble;
+  margin: 0px 10px 0px 0px;
+  float:right;
+}
+
+.arrow {
   box-sizing: border-box;
-  left: -11px;
   position: absolute;
   text-align: left;
   top: 50%;
   width: 11px;
+  margin: -11px 0px 0px;
+}
+
+.arrow-left {
+  @extend .arrow;
+  left: -11px;
+  float:left;
   border-top: 11px solid rgba(0, 0, 0, 0);
   border-right: 11px solid rgb(67, 74, 84);
   border-bottom: 11px solid rgba(0, 0, 0, 0);
   border-left: 0px solid rgba(0, 0, 0, 0);
-  margin: -11px 0px 0px;
+
 }
 
-.arrow-left::after {
-  content: ' ';
+.arrow-right {
+  @extend .arrow;
+  right: -11px;
+  float: right;
+  border-top: 11px solid rgba(0, 0, 0, 0);
+  border-right: 0px solid rgba(0, 0, 0, 0);
+  border-bottom: 11px solid rgba(0, 0, 0, 0);
+  border-left: 11px solid rgb(67, 74, 84);
 }
 
 .comment-title {
