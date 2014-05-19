@@ -58,14 +58,13 @@
 	<h3>Comments</h3>
 	<% @post.comments.each do |c| %>
 		<% unless c.id.nil? %>
-			<div class="row comment">
-				<%= c.text %>
-				<br>
-				-<%= c.user.first_name %>
-			</div>
+			<%= render partial: "comment", locals: {comment: c, post: @post} %>
 		<% end %>	
 	<% end %>
 </div>
+
+
+<!-- Post a comment stuff -->
 
 <div class="row comment-post" style="margin-top:30px">
 	<%= form_for [@user, @post, @comment] do |f| %>
