@@ -85,7 +85,7 @@ footer {
 
 // comments -----------------
 
-.popover {
+.comment-bubble {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px 0px;
   box-sizing: border-box;
   position: relative;
@@ -98,7 +98,7 @@ footer {
   padding: 1px;
 }
 
-.arrow {
+.arrow-left {
   box-sizing: border-box;
   left: -11px;
   position: absolute;
@@ -112,11 +112,11 @@ footer {
   margin: -11px 0px 0px;
 }
 
-.arrow::after {
+.arrow-left::after {
   content: ' ';
 }
 
-.popover-title {
+.comment-title {
   box-sizing: border-box;
   color: rgb(170, 178, 189);
   height: 26px;
@@ -125,11 +125,11 @@ footer {
   padding: 8px 14px 0px;
 }
 
-.popover-content {
+.comment-content {
   padding: 9px 14px;
 }
 
-.popover-content p {
+.comment-content p {
   color: rgb(255, 255, 255);
   font: normal normal normal 14px/20px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: 0px 0px 10px;

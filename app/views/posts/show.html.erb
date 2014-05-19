@@ -59,10 +59,10 @@
 	<% @post.comments.each do |c| %>
 		<% unless c.id.nil? %>
 			<div class="row comment">
-				<div class="popover">
-				  <div class="arrow"></div>
-				  <h3 class="popover-title"><%= c.user.first_name %></h3>
-				  <div class="popover-content">
+				<div class="comment-bubble">
+				  <div class="arrow-left"></div>
+				  <h3 class="comment-title"><%= c.user.first_name %></h3>
+				  <div class="comment-content">
 				    <p><%= c.text %></p>
 				  <p><%= time_ago_in_words(c.created_at).gsub('about','') %> ago</p>
 				  </div>
