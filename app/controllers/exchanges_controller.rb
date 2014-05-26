@@ -9,10 +9,11 @@ class ExchangesController < ApplicationController
 
 	def show
 		# get exchange from db
-		# @exchange = Exchange.find(params[])
+		# binding.pry
+		@exchange = Exchange.find(params["id"].to_i)
 		# load objects
-		# @buyer = exchange.buyer
-		# @seller = exchange.seller
+		@buyer = @exchange.buyer
+		@seller = @exchange.seller
 		# security: make sure only buyer or seller is viewing.
 		#   otherwise return to root path with a message
 	end
