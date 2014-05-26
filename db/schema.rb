@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526183204) do
+ActiveRecord::Schema.define(version: 20140526193053) do
 
   create_table "comments", force: true do |t|
     t.string   "text"
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(version: 20140526183204) do
     t.integer  "seller_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "post_id"
   end
 
   add_index "exchanges", ["buyer_id"], name: "index_exchanges_on_buyer_id"
+  add_index "exchanges", ["post_id"], name: "index_exchanges_on_post_id"
   add_index "exchanges", ["seller_id"], name: "index_exchanges_on_seller_id"
 
   create_table "followed_tags", force: true do |t|

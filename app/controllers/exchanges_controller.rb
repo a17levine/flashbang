@@ -18,4 +18,11 @@ class ExchangesController < ApplicationController
 		#   otherwise return to root path with a message
 	end
 
+
+	# this method shows the user a table of 
+	# all exchanges related to them
+	def index
+		
+	end
+
 end
