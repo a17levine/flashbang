@@ -20,6 +20,7 @@
           <a href="#"><%= current_user.full_name %></a>
           <ul class="dropdown" id="nav-dropdown">
             <li><a href="#">My Posts</a></li>
+            <li><a href="#">My Exchanges</a></li>
             <li><%= link_to "Account Settings", edit_user_registration_path %></li>
             <li><a href="#">Report a Bug</a></li>
             <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
