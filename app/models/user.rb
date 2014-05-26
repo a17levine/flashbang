@@ -21,6 +21,5 @@ class User < ActiveRecord::Base
 
    def exchanges
      (self.selling_exchanges + self.buying_exchanges).sort_by(&:created_at)
-     # (@comments + @images).sort_by(&:created_at)
    end
 end
