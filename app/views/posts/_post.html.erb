@@ -13,6 +13,11 @@
 					 // 
 					<%= "#{pluralize(post_data[:comment_count], 'comment')}" %> - posted 
 					<%= time_ago_in_words(post.created_at).gsub('about','') %> ago
+
+					<% if post.user == current_user %>
+						<%= link_to "- delete", [current_user, post], method: :delete, data: { confirm: "Are you sure?" } %>
+					<% end %>
+
 				</small>
 		</h4>
 	</a>

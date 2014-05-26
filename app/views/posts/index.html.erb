@@ -1,0 +1,14 @@
+<% provide(:title, "your posts") %>
+
+<% if @user_posts.empty? %>
+	<p>You have no active posts</p>
+<% else %>
+	<div class='row latest-posts'>
+		<div>
+			<h1 class="large-offset-3">your posts</h1>	
+		</div>
+
+		<%= render partial: "post", collection: @user_posts %>
+		
+	</div>
+<% end %>

@@ -1,0 +1,27 @@
+<div class="row">
+	<h1>Exchange your item!</h1>
+	<p>This page is private for your exchange</p>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="large-6 columns">
+		<h3>Seller</h3>
+		<p><%= @seller.full_name %></p>
+		<p>555-555-5555</p>
+		<p><%= mail_to @seller.email %></p>
+	</div>
+	<div class="large-6 columns">
+		<h3>Buyer</h3>
+		<p><%= @buyer.full_name %></p>
+		<p>555-555-5555</p>
+		<p><%= mail_to @buyer.email %></p>
+	</div>
+</div>
+
+<hr>
+
+<div class="row">
+	<h2>Chat</h2>
+</div>

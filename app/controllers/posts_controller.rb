@@ -19,6 +19,12 @@ class PostsController < ApplicationController
 		@post = current_user.posts.new
 	end
 
+	# this shows the user's posts, as user_posts(user)
+	
+	def index
+		@user_posts = Post.where(user_id: current_user.id).where(active: true).order("created_at DESC")
+	end
+
 	def show
 		@post = Post.find(params[:id])
 		@comments = @post.comments
@@ -36,8 +42,16 @@ class PostsController < ApplicationController
 		
 	end
 
-	def delete
-		
+	def destroy
+		@post = Post.find(params[:id])
+		if @post.user == current_user
+			@post.active = false
+			if @post.save
+				redirect_to user_posts_path(current_user), :flash => { :notice => "post removed successfully" }
+			else
+				redirect_to user_posts_path(current_user), :error => { :notice => "something went wrong" }
+			end
+		end
 	end
 
 	private
