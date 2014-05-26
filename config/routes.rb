@@ -14,9 +14,12 @@ Flashbang::Application.routes.draw do
         get 'accept', :on => :member
       end
     end
+    # this becomes the user_exchanges path
+    # it shows users their exchanges
+    get 'exchanges' => 'exchanges#index'
   end
 
-  resources :exchanges
+  resources :exchanges, only: [:show, :create]
 
   get 'tag/:name' => 'tags#show', :as => "tag"
   get 'following' => 'followedtags#show', :as => "followed_tags"
