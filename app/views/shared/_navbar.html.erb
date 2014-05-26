@@ -19,7 +19,7 @@
         <li class="has-dropdown" style="height:100%">
           <a href="#"><%= current_user.full_name %></a>
           <ul class="dropdown" id="nav-dropdown">
-            <li><a href="#">My Posts</a></li>
+            <li><%= link_to "My Posts", user_posts_path(current_user) %></li>
             <li><%= link_to "My Exchanges", user_exchanges_path(current_user) %></li>
             <li><%= link_to "Account Settings", edit_user_registration_path %></li>
             <li><a href="#">Report a Bug</a></li>

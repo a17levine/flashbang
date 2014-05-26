@@ -19,6 +19,12 @@ class PostsController < ApplicationController
 		@post = current_user.posts.new
 	end
 
+	# this shows the user's posts, as user_posts(user)
+	
+	def index
+		@user_posts = Post.where(user_id: current_user.id).order("created_at DESC")
+	end
+
 	def show
 		@post = Post.find(params[:id])
 		@comments = @post.comments

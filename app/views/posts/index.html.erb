@@ -1,0 +1,12 @@
+<%= render "shared/navbar" %>
+
+<% provide(:title, "your posts") %>
+
+<div class='row latest-posts'>
+	<div>
+		<h1 class="large-offset-3">your posts</h1>	
+	</div>
+
+	<%= render partial: "post", collection: @user_posts %>
+	
+</div>
