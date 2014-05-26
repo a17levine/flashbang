@@ -42,8 +42,16 @@ class PostsController < ApplicationController
 		
 	end
 
-	def delete
-		
+	def destroy
+		@post = Post.find(params[:id])
+		if @post.user == current_user
+			@post.active = false
+			if @post.save
+				redirect_to user_posts_path(current_user), :flash => { :notice => "post removed successfully" }
+			else
+				redirect_to user_posts_path(current_user), :error => { :notice => "something went wrong" }
+			end
+		end
 	end
 
 	private
