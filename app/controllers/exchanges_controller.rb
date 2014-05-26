@@ -21,8 +21,9 @@ class ExchangesController < ApplicationController
 
 	# this method shows the user a table of 
 	# all exchanges related to them
+
 	def index
-		
+		@user_exchanges = User.find(params["user_id"].to_i).exchanges
 	end
 
 end

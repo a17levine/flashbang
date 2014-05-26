@@ -3,7 +3,7 @@
 <% provide(:title, "all exchanges") %>
 
 <div class="row">
-	<h1>All Exchanges</h1>
+	<h1>My Exchanges</h1>
 </div>
 
 <div class="row">
@@ -16,21 +16,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Content Goes Here</td>
-      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
-      <td>Content Goes Here</td>
-    </tr>
-    <tr>
-      <td>Content Goes Here</td>
-      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-      <td>Content Goes Here</td>
-    </tr>
-    <tr>
-      <td>Content Goes Here</td>
-      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-      <td>Content Goes Here</td>
-    </tr>
+  	<% @user_exchanges.each do |ux| %>
+	    <tr>
+	      <td>
+	      	<% if ux.buyer == current_user %>
+	      		Buying
+	      		<% else %>
+	      		Selling
+	      	<% end %>
+	      </td>
+	      <td><%= ux.post.tag_list %></td>
+	      <td><%= link_to "view exchange", exchange_path(ux) %></td>
+	    </tr>
+	  <% end %>
   </tbody>
 </table>
 </div>

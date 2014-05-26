@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 	# this shows the user's posts, as user_posts(user)
 	
 	def index
-		@user_posts = Post.where(user_id: current_user.id).order("created_at DESC")
+		@user_posts = Post.where(user_id: current_user.id).where(active: true).order("created_at DESC")
 	end
 
 	def show
