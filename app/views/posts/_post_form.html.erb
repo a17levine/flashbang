@@ -4,10 +4,9 @@
   <p>2. add price</p>
   <%= f.text_field :price,placeholder: "price" %>
   <%= f.hidden_field :tag_list %>
-  <p>3. add tags: ex. (bike, fuji, roadbike)</p>
-  <ul id="mytags">
-  	
-  </ul>
+  <p>3. add tags (max 5)</p>
   
+  <ul id="mytags"></ul>
+
   <%= f.submit "post" %>
 <% end %>

@@ -31,10 +31,10 @@
             allowDuplicates   : false,
             caseSensitive     : true,
             fieldName         : 'tags',
-            placeholderText   : null,   // Sets `placeholder` attr on input field.
+            placeholderText   : 'ex. #bike, #schwinn',   // Sets `placeholder` attr on input field.
             readOnly          : false,  // Disables editing.
             removeConfirmation: false,  // Require confirmation to remove tags.
-            tagLimit          : null,   // Max number of tags allowed (null for unlimited).
+            tagLimit          : 5,   // Max number of tags allowed (null for unlimited).
 
             // Used for autocomplete, unless you override `autocomplete.source`.
             availableTags     : [],
@@ -133,6 +133,7 @@
             }
 
             if (this.options.placeholderText) {
+                console.log("tag list", this.tagList)
                 this.tagInput.attr('placeholder', this.options.placeholderText);
             }
 
