@@ -49,7 +49,7 @@ class PostsController < ApplicationController
 			if @post.save
 				redirect_to user_posts_path(current_user), :flash => { :notice => "post removed successfully" }
 			else
-				redirect_to user_posts_path(current_user), :error => { :notice => "something went wrong" }
+				redirect_to user_posts_path(current_user), :flash => { :error => "something went wrong" }
 			end
 		end
 	end
