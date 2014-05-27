@@ -22,6 +22,6 @@ Flashbang::Application.routes.draw do
   resources :exchanges, only: [:show, :create]
 
   get 'tag/:name' => 'tags#show', :as => "tag"
-  get 'following' => 'followedtags#show', :as => "followed_tags"
+  get 'following' => 'followedtags#index', :as => "followed_tags"
   
 end
