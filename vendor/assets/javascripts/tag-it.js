@@ -31,7 +31,7 @@
             allowDuplicates   : false,
             caseSensitive     : true,
             fieldName         : 'tags',
-            placeholderText   : 'ex. #bike, #schwinn',   // Sets `placeholder` attr on input field.
+            placeholderText   : false,   // Sets `placeholder` attr on input field.
             readOnly          : false,  // Disables editing.
             removeConfirmation: false,  // Require confirmation to remove tags.
             tagLimit          : 5,   // Max number of tags allowed (null for unlimited).
