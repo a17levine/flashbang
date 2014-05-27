@@ -3,9 +3,18 @@ Flashbang::Application.routes.draw do
 
   root 'static_pages#home'
 
+  # root-level routes -------
+
+  get 'latest' => 'posts#latest'
+  get 'following' => 'followedtags#index', :as => "followed_tags"
+
+  get 'tag/:name' => 'tags#show', :as => "tag"
+  
   get 'posts/:id' => 'posts#show', :as => "post"
 
-  get '/latest' => 'posts#latest'
+  resources :exchanges, only: [:show, :create]
+
+  # user-level routes -------
 
   resources :users do
     resources :posts do
@@ -19,9 +28,4 @@ Flashbang::Application.routes.draw do
     get 'exchanges' => 'exchanges#index'
   end
 
-  resources :exchanges, only: [:show, :create]
-
-  get 'tag/:name' => 'tags#show', :as => "tag"
-  get 'following' => 'followedtags#show', :as => "followed_tags"
-  
 end
