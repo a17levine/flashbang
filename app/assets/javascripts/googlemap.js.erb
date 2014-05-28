@@ -1,4 +1,5 @@
 window.chosenPlaceUrl;
+window.chosenPlace;
 
 function initialize() {
   var mapOptions = {
@@ -29,6 +30,7 @@ function initialize() {
     infowindow.close();
     marker.setVisible(false);
     var place = autocomplete.getPlace();
+    window.chosenPlace = place;
     window.chosenPlaceUrl = place['url'];
     if (!place.geometry) {
       return;
@@ -68,6 +70,7 @@ function initialize() {
     marker,
     'dragend',
     function() {
+      window.chosenPlace = marker.getPosition();
       window.chosenPlaceUrl = "http://maps.google.com/?q=" + marker.getPosition().toUrlValue();
       // console.log(chosenPlaceUrl);
     }
