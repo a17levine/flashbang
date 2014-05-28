@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526193053) do
+ActiveRecord::Schema.define(version: 20140528061247) do
 
   create_table "comments", force: true do |t|
     t.string   "text"
@@ -30,9 +30,11 @@ ActiveRecord::Schema.define(version: 20140526193053) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "post_id"
+    t.integer  "place_id"
   end
 
   add_index "exchanges", ["buyer_id"], name: "index_exchanges_on_buyer_id"
+  add_index "exchanges", ["place_id"], name: "index_exchanges_on_place_id"
   add_index "exchanges", ["post_id"], name: "index_exchanges_on_post_id"
   add_index "exchanges", ["seller_id"], name: "index_exchanges_on_seller_id"
 
@@ -60,6 +62,14 @@ ActiveRecord::Schema.define(version: 20140526193053) do
 
   add_index "offers", ["post_id"], name: "index_offers_on_post_id"
   add_index "offers", ["user_id"], name: "index_offers_on_user_id"
+
+  create_table "places", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.datetime "created_at"
