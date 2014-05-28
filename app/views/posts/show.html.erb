@@ -66,7 +66,7 @@
 
 <div class="row comment-post" style="margin-top:30px">
 	<%= form_for [@user, @post, @comment] do |f| %>
-		<%= f.text_field :text, :autofocus => true %>
-		<%= f.submit "Comment" %>
+		<%= f.text_field :text, :autofocus => true, :placeholder => "write a comment" %>
+		<%= f.submit "submit" %>
 	<% end %>
 </div>
