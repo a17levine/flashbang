@@ -14,4 +14,8 @@ module PostsHelper
 		return result.html_safe
 	end
 
+	def effective_post_name
+		"##{@post.tag_list.first}"
+	end
+
 end

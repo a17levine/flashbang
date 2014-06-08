@@ -1,4 +1,5 @@
 class Notifier < ActionMailer::Base
+  include PostsHelper
   add_template_helper(PostsHelper)
   default from: "alex@flashba.ng"
 
@@ -15,7 +16,7 @@ class Notifier < ActionMailer::Base
     # potential bug - this is tied to JPG
     attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
     mail( :to => @user.email,
-    :subject => 'Thank you for posting to Flashbang' )
+    :subject => "Thank you for posting your #{effective_post_name} to Flashbang" )
   end
 
   def notify_user_of_post_that_matches_followed_tag(post,tag)
