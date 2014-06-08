@@ -11,6 +11,7 @@ class OffersController < ApplicationController
     offer = post.offers.new(user_id: user_id, amount: amount)
 
     if offer.save
+      Notifier.notify_post_owner_when_offer_received(offer).deliver
       redirect_to post, :flash => { :notice => "offer of $#{amount} submitted successfully" }
     else
       redirect_to post, :flash => { :error => "offer invalid and not placed. Try again." }

@@ -36,7 +36,14 @@ class Notifier < ActionMailer::Base
 
   # Offer-related mailers ----
 
-  def notify_post_owner_when_offer_received(owner, offer)
+  def notify_post_owner_when_offer_received(offer)
+    @post = offer.post
+    @offer = offer
+    @owner = @post.user
+    attachments.inline['logo-small.png'] = File.read("#{Rails.root}/app/assets/images/logo-small.png")
+    attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
+    mail( :to => @owner.email,
+    :subject => "Offer of $#{@offer.amount} received on #{effective_post_name} - Flashbang" )
   end
 
   def notify_offerer_when_post_owner_accepts_offer(offer)
