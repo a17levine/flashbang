@@ -13,6 +13,11 @@ Flashbang::Application.configure do
   :enable_starttls_auto => true
   }
 
+  config.action_mailer.default_url_options = {
+    :host => 'http://flashbang.herokuapp.com',
+    :port => 80
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

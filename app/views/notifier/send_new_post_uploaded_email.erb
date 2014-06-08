@@ -4,7 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thanks for posting to Flashbang <%= @user.first_name %></h1>
+    <h1>Thanks for posting to Flashbang!</h1>
     <p>Your post has been uploaded successfully</p>
+    <p>Listed price: <%= number_to_currency(@post.price, precision: 0) %></p>
+		<p>Tags: <%= hashtagify_and_linkify_tag_list(@post.tags)%></p>
+    <%= image_tag attachments['post_image.jpg'].url %>
   </body>
 </html>

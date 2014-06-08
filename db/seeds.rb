@@ -7,8 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(email:"a@a.com",first_name:"Shehzan", last_name:"Devani", password:"11111111", password_confirmation: "1"*8)
-
-User.create(email:"b@b.com",first_name:"Alex", last_name:"Levine", password:"11111111", password_confirmation: "1"*8)
-
-User.create(email:"c@c.com",first_name:"Charlotte", last_name:"Giles", password:"11111111", password_confirmation: "1"*8)
+alex = User.create(email:"a17levine@gmail.com",first_name:"Alex", last_name:"Levine", password:"password", password_confirmation: "password")
+alexander = User.create(email:"alex@makersquare.com",first_name:"Alexander", last_name:"Levine", password:"password", password_confirmation: "password")
+flashbang_guy = User.create(email:"flashbangapp@gmail.com",first_name:"Flash", last_name:"Bang", password:"password", password_confirmation: "password")
