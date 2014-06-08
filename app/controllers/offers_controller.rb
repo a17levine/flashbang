@@ -20,20 +20,23 @@ class OffersController < ApplicationController
   end
 
   def accept
-    puts "this just hit the accept action in the offers controller"
-    # binding.pry
     post = Post.find(params[:post_id])
-    post_owner = User.find(post.user_id)
-    offer = Offer.find(params[:id])
+    post_owner = post.user
+    offer = post.max_offer
 
     if current_user == post_owner
       offer.accepted = true
       offer.save
-      redirect_to post, :flash => { :notice => "offer accepted!" }
-    #   transfer = Transfer.new
-    #   redirect_to transfer
-    # else
-    #   flash[:alert] = "You are not the owner of this post!"
+      exchange = Exchange.create(
+        buyer: offer.user,
+        seller: post_owner,
+        post: post)
+
+      Notifier.notify_winning_bidder_when_post_owner_accepts_offer(exchange).deliver
+      Notifier.confirm_owner_of_accepted_offer(exchange).deliver
+      redirect_to exchange, :flash => { :notice => "offer accepted! coordinate exchange" }
+    else
+      flash[:alert] = "You are not the owner of this post!"
     end
   end
 

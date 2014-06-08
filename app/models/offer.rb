@@ -8,11 +8,20 @@ class Offer < ActiveRecord::Base
 
   before_create :set_accepted_false
   before_create :must_be_highest_offer
+  before_create :is_post_offerable?
 
 
 
 
   private
+
+  def is_post_offerable?
+    if self.post.offers.any?{|o| o.accepted == true}
+      return false
+    else
+      return true
+    end
+  end
 
   def set_accepted_false
     self.accepted = false

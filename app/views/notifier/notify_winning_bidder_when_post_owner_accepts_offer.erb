@@ -5,8 +5,8 @@
   </head>
   <body>
   	<%= image_tag attachments['logo-small.png'].url %>
-		<h1>Offer of <%= "$#{@offer.amount}" %> received on <%= link_to effective_post_name, post_url(@post) %></h1>
-		<%= link_to "Go to Flashbang to accept or comment", post_url(@post)%>
+		<h1>Your offer of <%= "$#{@post.max_offer.amount}" %> has been accepted for <%= link_to effective_post_name, post_url(@post) %></h1>
+		<%= link_to "Coordinate your exchange", exchange_url(@exchange)%>
 		<%= image_tag attachments['post_image.jpg'].url %>
   </body>
 </html>
