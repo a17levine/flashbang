@@ -72,7 +72,8 @@ function initialize() {
     function() {
       window.chosenPlace = marker.getPosition();
       window.chosenPlaceUrl = "http://maps.google.com/?q=" + marker.getPosition().toUrlValue();
-      // console.log(chosenPlaceUrl);
+      marker.icon.url = "http://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png";
+      infowindow.setContent("<div><strong>Custom Location</strong>");
     }
   );
 }

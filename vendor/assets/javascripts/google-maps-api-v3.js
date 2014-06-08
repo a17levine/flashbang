@@ -3,7 +3,7 @@
 
 // <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDbGHvHMeIHMycjI0vN-dquD3N7kqeSRCQ&libraries=places"%>
 
---------
+// --------
 
 
 window.google = window.google || {};
