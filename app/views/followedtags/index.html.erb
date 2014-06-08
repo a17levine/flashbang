@@ -4,7 +4,11 @@
 	<div>
 		<h1 class="large-offset-3">following</h1>	
 	</div>
-
-	<%= render partial: "posts/post", collection: @relevant_posts %>
+	
+	<% if @relevant_posts.nil? %>
+		<p>No posts to display</p>
+	<% else %>
+		<%= render partial: "posts/post", collection: @relevant_posts %>
+	<% end %>
 	
 </div>

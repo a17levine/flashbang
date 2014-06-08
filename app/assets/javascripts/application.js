@@ -17,7 +17,9 @@
 //= require tag-it
 //= require tagging
 //= require alertify
-//= requre notificationsWithAlertifyJs
+//= require notificationsWithAlertifyJs
+//= require google-maps-api-v3
+//= require googlemap
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

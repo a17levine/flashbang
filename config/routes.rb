@@ -1,4 +1,5 @@
 Flashbang::Application.routes.draw do
+  get "places/create"
   devise_for :users
 
   root 'static_pages#home'
@@ -12,7 +13,9 @@ Flashbang::Application.routes.draw do
   
   get 'posts/:id' => 'posts#show', :as => "post"
 
-  resources :exchanges, only: [:show, :create]
+  resources :exchanges, only: [:show, :create] do
+    post '/savenewplace' => 'places#create'
+  end
 
   # user-level routes -------
 

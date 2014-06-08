@@ -2,6 +2,7 @@
 <div class='columns large-5 large-offset-3 post'>
 	<a href="<%= post_path(post.id) %>"><%= image_tag post.picture %>
 		<h4><%=  number_to_currency(post.price, precision: 0)  %>
+			<small><%= hashtagify_and_linkify_tag_list(post.tags) %></small>
 			<br>	
 				<small>
 					<%= "#{pluralize(post_data[:offer_count], 'offer') }" %> 
