@@ -50,17 +50,18 @@
 
 <!-- End of Offer Modal  -->
 
+<hr>
+
 <!-- Begin comments and comment posting  -->
 
 <div class="row comments">
-	<h3>Comments</h3>
+	<!-- <h3>Comments</h3> -->
 	<% @post.comments.each do |c| %>
 		<% unless c.id.nil? %>
 			<%= render partial: "comment", locals: {comment: c, post: @post} %>
 		<% end %>	
 	<% end %>
 </div>
-
 
 <!-- Post a comment stuff -->
 

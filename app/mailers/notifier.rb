@@ -1,4 +1,5 @@
 class Notifier < ActionMailer::Base
+  add_template_helper(PostsHelper)
   default from: "alex@flashba.ng"
 
   # User lifecycle related mailers
@@ -11,6 +12,8 @@ class Notifier < ActionMailer::Base
   def send_new_post_uploaded_email(user, post)
   	@post = post
     @user = user
+    # potential bug - this is tied to JPG
+    attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
     mail( :to => @user.email,
     :subject => 'Thank you for posting to Flashbang' )
   end
