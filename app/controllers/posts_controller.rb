@@ -34,8 +34,14 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = current_user.posts.create(post_params)
-		redirect_to post_path(@post), :flash => { :notice => "post uploaded successfully" }
+		@post = current_user.posts.new(post_params)
+		if @post.save
+			Notifier.send_new_post_uploaded_email(current_user, @post).deliver
+			redirect_to post_path(@post), :flash => { :notice => "post uploaded successfully" }
+		else
+		end
+
+		
 	end
 
 	def update
