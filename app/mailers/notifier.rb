@@ -14,6 +14,7 @@ class Notifier < ActionMailer::Base
   	@post = post
     @user = user
     # potential bug - this is tied to JPG
+    attachments.inline['logo-small.png'] = File.read("#{Rails.root}/app/assets/images/logo-small.png")
     attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
     mail( :to => @user.email,
     :subject => "Thank you for posting your #{effective_post_name} to Flashbang" )
