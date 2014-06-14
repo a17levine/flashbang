@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  belongs_to :post
+  belongs_to :commentable, polymorphic: true
   belongs_to :user
 
   before_save :check_for_empty_string

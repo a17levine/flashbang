@@ -15,12 +15,20 @@ describe Post do
 
 	it "returns post followers array when #post_followers is called, not owner" do
 		owner = FactoryGirl.create(:user)
-		binding.pry
 		post = FactoryGirl.create(:post, :user_id => owner.id)
-		bidder = FactoryGirl.create(:user)
+		offerer = FactoryGirl.create(:user)
 		commenter = FactoryGirl.create(:user)
 
-		expect(owner.posts.first).to eq(post)
+		#commenter comments on post
+		FactoryGirl.create(:post_comment, user_id: commenter.id, post_id: post.id)
+
+		#offerer offers on post
+		FactoryGirl.create(:offer, user_id: offerer.id, post_id: post.id)
+
+		# binding.pry
+		expect(post.post_followers).should include(offerer)
+		# expect(post.post_followers).should include(commenter)
+		expect(post.post_followers).should_not include(owner)
 
 	end
 
