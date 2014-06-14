@@ -11,6 +11,12 @@ group :development do
 	gem 'figaro'
 end
 
+group :test do
+	gem 'faker'
+	gem 'factory_girl_rails'
+	gem 'pry'
+end
+
 group :production do
 	gem 'pg'
 end

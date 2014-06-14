@@ -25,18 +25,18 @@ class Post < ActiveRecord::Base
 	# who either commented made an offer 
 	# on the post (who aren't the owner)
 
-	def post_followers
-		@non_owner_commenters = self.comments.collect{|c|
-			next if c.user == c.post.user
-			c.user}.compact!
-		@offerers = self.offers.collect{|o| o.user}
-		@unique_followers = (@non_owner_commenters + @offerers).to_set
-		if @unique_followers.empty?
-			nil
-		else
-			@unique_followers
-		end
-	end
+	# def post_followers
+	# 	@non_owner_commenters = self.comments.collect{|c|
+	# 		next if c.user == c.post.user
+	# 		c.user}.compact!
+	# 	@offerers = self.offers.collect{|o| o.user}
+	# 	@unique_followers = (@non_owner_commenters + @offerers).to_set
+	# 	if @unique_followers.empty?
+	# 		nil
+	# 	else
+	# 		@unique_followers
+	# 	end
+	# end
 
 	def highest_bidder
 		User.find(self.user_id)
