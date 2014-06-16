@@ -8,6 +8,7 @@ Flashbang::Application.routes.draw do
 
   get 'latest' => 'posts#latest'
   get 'following' => 'followedtags#index', :as => "followed_tags"
+  get 'following/edit' => 'followedtags#show', :as => "followed_tags_show"
 
   get 'tag/:name' => 'tags#show', :as => "tag"
   
