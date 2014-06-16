@@ -14,7 +14,7 @@ class Notifier < ActionMailer::Base
   def send_new_post_uploaded_email(user, post)
   	@post = post
     @user = user
-    attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
+    attach_post_picture
     mail( :to => @user.email,
     :subject => "Thank you for posting your #{effective_post_name} to Flashbang" )
   end
@@ -24,11 +24,27 @@ class Notifier < ActionMailer::Base
 
   # Comment-related mailers ----
 
-  def notify_seller_of_comment_on_post(seller, comment)
+  def notify_seller_of_comment_on_post(comment)
+    @post = comment.commentable
+    @comment = comment
+    @commenter = comment.user
+    @owner = @post.user
+    attach_post_picture
+    mail( :to => @owner.email,
+      :subject => "New comment on #{effective_post_name} // Flashbang" ).deliver
   end
 
-  def notify_potential_buyers_when_owner_comments(post)
-    @potential_buyers_user_array = post.potential_buyers
+  def notify_post_followers_when_owner_comments(comment)
+    @post = comment.commentable
+    @comment = comment
+    @post_followers_set = @post.followers
+    attach_post_picture
+    unless @post_followers_set.empty?
+      @post_followers_set.each do |user|
+        mail( :to => user.email,
+      :subject => "Seller comment on #{effective_post_name} posted // Flashbang" ).deliver
+      end
+    end
   end
 
   def notify_other_party_of_comment_on_exchange()
@@ -40,7 +56,7 @@ class Notifier < ActionMailer::Base
     @post = offer.post
     @offer = offer
     @owner = @post.user
-    attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
+    attach_post_picture
     mail( :to => @owner.email,
     :subject => "Offer of $#{@offer.amount} received on #{effective_post_name} - Flashbang" )
   end
@@ -49,7 +65,7 @@ class Notifier < ActionMailer::Base
     @post = offer.post
     @offer = offer
     @offerer = offer.user
-    attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
+    attach_post_picture
     mail( :to => @offerer.email,
     :subject => "You offered $#{@offer.amount} on a #{effective_post_name} - Flashbang" )
   end
@@ -58,7 +74,7 @@ class Notifier < ActionMailer::Base
     @exchange = exchange
     @winning_bidder = @exchange.buyer
     @post = @exchange.post
-    attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
+    attach_post_picture
     mail( :to => @winning_bidder.email,
     :subject => "Offer accepted! $#{@post.max_offer.amount} // #{effective_post_name} // Next steps - Flashbang" )
   end
@@ -67,12 +83,22 @@ class Notifier < ActionMailer::Base
     @exchange = exchange
     @post = @exchange.post
     @post_owner = @post.user
-    attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
+    attach_post_picture
     mail( :to => @post_owner.email,
     :subject => "Offer accepted! $#{@post.max_offer.amount} // #{effective_post_name} // Next steps - Flashbang" )
   end
 
   def notify_losing_offerers_they_have_lost(post)
+    @post = post
+    @highest_bidder = @post.highest_bidder
+    @highest_offer_amount = @post.max_offer.amount
+    @losing_offerers = @post.offers.map{|o| o.user}.to_set.delete(@highest_bidder)
+    attach_post_picture
+
+    @losing_offerers.each do |lo|
+      mail( :to => lo.email,
+    :subject => "An offer has been accepted on #{effective_post_name} // Flashbang" ).deliver
+    end
   end
 
   # Misc mailers ----
@@ -81,6 +107,10 @@ class Notifier < ActionMailer::Base
   end
 
   private
+
+  def attach_post_picture
+    attachments.inline['post_image.jpg'] = File.read(@post.picture.path)
+  end
 
   def load_common_assets
     # potential bug - this is tied to JPG

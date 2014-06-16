@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	<%= image_tag attachments['logo-small.png'].url %>
+		<h1>An offer has been accepted for <%= effective_post_name %></h1>
+		<h3>The winning offer was: <%= number_to_currency(@highest_offer_amount, precision: 0) %></h3>
+    
+		<%= image_tag attachments['post_image.jpg'].url %>
+  </body>
+</html>

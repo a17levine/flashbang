@@ -45,7 +45,9 @@ class Post < ActiveRecord::Base
 	end
 
 	def highest_bidder
-		User.find(self.user_id)
+		if self.max_offer
+			self.max_offer.user
+		end
 	end
 
 	def meta_data

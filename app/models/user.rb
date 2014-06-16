@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
 	 	"#{self.first_name} #{self.last_name}"
 	 end
 
+   def short_name
+     "#{self.first_name} #{self.last_name[0]}."
+   end
+
    def follow_tag(tag_text)
      self.followed_tags.create(tag: Tag.find_or_create_by_name(tag_text))
    end

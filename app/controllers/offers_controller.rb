@@ -20,24 +20,31 @@ class OffersController < ApplicationController
   end
 
   def accept
-    post = Post.find(params[:post_id])
-    post_owner = post.user
-    offer = post.max_offer
+    @post = Post.find(params[:post_id])
+    post_owner = @post.user
+    offer = @post.max_offer
 
     if current_user == post_owner
       offer.accepted = true
       offer.save
-      exchange = Exchange.create(
+      @exchange = Exchange.create(
         buyer: offer.user,
         seller: post_owner,
-        post: post)
+        post: @post)
 
-      Notifier.notify_winning_bidder_when_post_owner_accepts_offer(exchange).deliver
-      Notifier.confirm_owner_of_accepted_offer(exchange).deliver
-      redirect_to exchange, :flash => { :notice => "offer accepted! coordinate exchange" }
+      dispatch_offer_accepted_mailers
+      redirect_to @exchange, :flash => { :notice => "offer accepted! coordinate exchange" }
     else
       flash[:alert] = "You are not the owner of this post!"
     end
+  end
+
+  private
+
+  def dispatch_offer_accepted_mailers
+    Notifier.notify_winning_bidder_when_post_owner_accepts_offer(@exchange).deliver
+    Notifier.confirm_owner_of_accepted_offer(@exchange).deliver
+    Notifier.notify_losing_offerers_they_have_lost(@post)
   end
 
 end
