@@ -1,0 +1,41 @@
+function followSuccess(){
+  removeClass(success,"act-loading");
+  addClass(success,"act-success");
+  setTimeout(function(){
+    $("#success").addClass("followed-tag");
+    $("#success").removeClass("follow-tag");
+    document.getElementById("success-text").innerHTML = "unfollow tag";
+    removeClass(success,"act-success");
+  },2400)
+}
+
+function unFollowSuccess(){
+  removeClass(success,"act-loading");
+  removeClass(success,"act-success");
+  setTimeout(function(){
+    $("#success").removeClass("followed-tag");
+     $("#success").addClass("follow-tag");
+    document.getElementById("success-text").innerHTML = "follow tag";      
+  },0)
+}
+
+
+var success = document.getElementById("success")
+,		addClass = function (el, cl) { el.className += ' ' + cl }
+,		removeClass = function (el, cl) { var regex = new RegExp('(?:\\s|^)' + cl + '(?:\\s|$)'); el.className = el.className.replace(regex, ' ') }
+		
+success.addEventListener("click",function(){
+  if ($(this).hasClass("follow-tag")){
+	  addClass(success,"act-loading")
+    setTimeout(function(){ 
+      followSuccess();
+  	}, 2000)
+  } else if ($(this).hasClass("followed-tag")) {
+    console.log("shit has followed tag!");
+    $("#success").removeClass("followed-tag");
+    addClass(success,"act-loading");
+    setTimeout(function(){ 
+      unFollowSuccess();
+  	}, 2000)
+  }
+})

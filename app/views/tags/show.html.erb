@@ -1,7 +1,13 @@
 <% provide(:title, "##{@tag}") %>
 
-<div>
-	<h1 class='large-offset-3'># <%= @tag %></h1>	
+<div class='row'>
+	<h1 class='large-offset-2 page-title'># <%= @tag %></h1>
+	<a href="#" id="success" class="action follow-tag">
+		<i class="act-indicator i-M-loader"></i>
+		<i class="act-indicator i-accept"></i>
+		<i class="act-indicator i-ignore"></i>
+		<span id="success-background"><b id="success-text">follow tag</b></span>
+	</a>
 </div>
 
 <%= render partial: "posts/post", collection: @posts_with_tag %>
