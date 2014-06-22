@@ -11,6 +11,8 @@ Flashbang::Application.routes.draw do
   get 'following/edit' => 'followedtags#show', :as => "followed_tags_show"
 
   get 'tag/:name' => 'tags#show', :as => "tag"
+  post 'tag/:name/follow' => 'followedtags#create', :as => "follow_tag"
+  post 'tag/:name/unfollow' => 'followedtags#destroy', :as => "unfollow_tag"
   
   get 'posts/:id' => 'posts#show', :as => "post"
 

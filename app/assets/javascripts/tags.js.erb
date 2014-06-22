@@ -27,17 +27,21 @@ var success = document.getElementById("success")
 success.addEventListener("click",function(){
   if ($(this).hasClass("follow-tag")){
 	  addClass(success,"act-loading")
-    // ajax call to follow a certain tag
-    setTimeout(function(){ 
-      followSuccess();
-  	}, 2000)
+    $.ajax({
+      type: "POST",
+      url: "/tag/" + currentTag + "/follow",
+      success: followSuccess(),
+      // dataType: dataType
+    });
   } else if ($(this).hasClass("followed-tag")) {
     console.log("shit has followed tag!");
     $("#success").removeClass("followed-tag");
     addClass(success,"act-loading");
-    // ajax call to unfollow a certain tag
-    setTimeout(function(){ 
-      unFollowSuccess();
-  	}, 2000)
+    $.ajax({
+      type: "POST",
+      url: "/tag/" + currentTag + "/unfollow",
+      success: unFollowSuccess(),
+      // dataType: dataType
+    });
   }
 })

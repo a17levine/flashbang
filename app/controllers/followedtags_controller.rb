@@ -16,16 +16,24 @@ class FollowedtagsController < ApplicationController
   end
 
   def create
+    # binding.pry
   	# get tag from params
+    @tag_name = params['name']
+    @user = current_user
+    # @user.follow_tag(params[])
   	# get user
   	# userobject.follow_tag(text)
+    @user.follow_tag(@tag_name)
   	render nothing: true
   end
 
   def destroy
   	# get tag from params
+    @tag_name = params['name']
+    @user = current_user
   	# get user
   	# userobject.unfollow_tag(text)
+    @user.unfollow_tag(@tag_name)
   	render nothing: true
   end
 
