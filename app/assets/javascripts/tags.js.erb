@@ -20,11 +20,11 @@ function unFollowSuccess(){
 }
 
 
-var success = document.getElementById("success")
+var success = $("#success")
 ,		addClass = function (el, cl) { el.className += ' ' + cl }
 ,		removeClass = function (el, cl) { var regex = new RegExp('(?:\\s|^)' + cl + '(?:\\s|$)'); el.className = el.className.replace(regex, ' ') }
 		
-success.addEventListener("click",function(){
+success.on("click",function(){
   if ($(this).hasClass("follow-tag")){
 	  addClass(success,"act-loading")
     $.ajax({

@@ -2,11 +2,22 @@
 
 <div class='row'>
 	<h1 class='large-offset-2 page-title'># <%= @tag %></h1>
-	<a href="#" id="success" class="action follow-tag">
+	<a href="#" id="success" class="action 
+		<% if current_user.following_tag?(@tag) %>
+				<%= 'followed-tag' %> 
+			<% else %>
+				<%= 'follow-tag' %>
+			<% end %>">
 		<i class="act-indicator i-M-loader"></i>
 		<i class="act-indicator i-accept"></i>
 		<i class="act-indicator i-ignore"></i>
-		<span id="success-background"><b id="success-text">follow tag</b></span>
+		<span id="success-background"><b id="success-text">
+			<% if current_user.following_tag?(@tag) %>
+				<%='unfollow tag' %> 
+			<% else %>
+				<%= 'follow tag' %>
+			<% end %>
+		</b></span>
 	</a>
 </div>
 

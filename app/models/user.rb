@@ -35,6 +35,11 @@ class User < ActiveRecord::Base
      (self.selling_exchanges + self.buying_exchanges).sort_by(&:created_at)
    end
 
+   def following_tag?(tag_text)
+     @tag = Tag.where(:name => tag_text).first
+     self.tags.include?(@tag)
+   end
+
    # this logic is trash but works for now.
    def relevant_posts
     @relevant_posts = []
