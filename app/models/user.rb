@@ -34,4 +34,14 @@ class User < ActiveRecord::Base
    def exchanges
      (self.selling_exchanges + self.buying_exchanges).sort_by(&:created_at)
    end
+
+   # this logic is trash but works for now.
+   def relevant_posts
+    @relevant_posts = []
+      self.tags.each do |t|
+        posts_with_tag = Post.tagged_with(t.name).where(active: true).sort_by(&:created_at)
+        posts_with_tag.each {|p| @relevant_posts << p}
+      end
+      @relevant_posts.uniq!.sort!{|a,b| b.created_at <=> a.created_at}
+   end
 end
