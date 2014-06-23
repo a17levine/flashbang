@@ -104,7 +104,7 @@ a.followed-tag span {
 }
 
 /* Icons */
-[class*=i-] {
+.i-styles {
   display: inline-block;
   vertical-align: middle;
   background: url(http://f.cl.ly/items/1Y3N0l1Z2j0v0G263E2K/sprite.png) no-repeat left top;
@@ -114,13 +114,18 @@ a.followed-tag span {
   height: 16px;
 }
 
-[class*=i-M] { width: 20px; height: 20px; }
+.i-ignore { @extend .i-styles }
 
 .i-M-loader {
+  @extend .i-styles;
   background: url(http://f.cl.ly/items/1Y3N0l1Z2j0v0G263E2K/sprite.png) no-repeat;
   animation: loader .7s steps(8) infinite;
+  width: 20px; height: 20px;
 }
-.i-accept { background-position: -77px -149px; }
+
+.i-accept { @extend .i-styles; 
+  background-position: -77px -149px; 
+}
 
 
 /* Keyframes declarations */
