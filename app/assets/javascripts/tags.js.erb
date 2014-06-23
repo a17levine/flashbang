@@ -30,8 +30,7 @@ success.on("click",function(){
     $.ajax({
       type: "POST",
       url: "/tag/" + currentTag + "/follow",
-      success: followSuccess(),
-      // dataType: dataType
+      success: followSuccess()
     });
   } else if ($(this).hasClass("followed-tag")) {
     console.log("shit has followed tag!");
@@ -40,8 +39,7 @@ success.on("click",function(){
     $.ajax({
       type: "POST",
       url: "/tag/" + currentTag + "/unfollow",
-      success: unFollowSuccess(),
-      // dataType: dataType
+      success: unFollowSuccess()
     });
   }
 })
