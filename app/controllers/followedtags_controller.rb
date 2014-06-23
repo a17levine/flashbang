@@ -1,7 +1,7 @@
 class FollowedtagsController < ApplicationController
 
   def index
-    @relevant_posts = Array.new
+    @relevant_posts = []
   	if current_user.followed_tags.empty?
   		redirect_to followed_tags_show_path, :flash => { :notice => "you must follow tags to view posts you're following" }
   	else
@@ -9,7 +9,7 @@ class FollowedtagsController < ApplicationController
       	posts_with_tag = Post.tagged_with(t.name).where(active: true).sort_by(&:created_at)
         posts_with_tag.each {|p| @relevant_posts << p}
     	end
-      @relevant_posts.uniq!
+      @relevant_posts.uniq!.sort!{|a,b| b.created_at <=> a.created_at}
   	end
     
   end
