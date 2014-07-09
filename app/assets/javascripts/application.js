@@ -18,8 +18,15 @@
 //= require tagging
 //= require alertify
 //= require notificationsWithAlertifyJs
-//= require google-maps-api-v3
-//= require googlemap
-//= require_tree .
+
+// application javascripts
+//= require comments
+//= require exchanges
+//= require followedtags
+//= require offers
+//= require places
+//= require posts
+//= require static_pages
+//= require tags
 
 $(function(){ $(document).foundation(); });
