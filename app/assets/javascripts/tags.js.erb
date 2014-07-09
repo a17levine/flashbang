@@ -1,45 +1,41 @@
+var success = $("#success");
+
 function followSuccess(){
-  removeClass(success,"act-loading");
-  addClass(success,"act-success");
-  setTimeout(function(){
-    $("#success").addClass("followed-tag");
-    $("#success").removeClass("follow-tag");
-    document.getElementById("success-text").innerHTML = "unfollow tag";
-    removeClass(success,"act-success");
-  },2400)
+  // success.removeClass("act-loading");
+  success.addClass("act-success");
+  success.addClass("followed-tag");
+  success.removeClass("follow-tag");
+  document.getElementById("success-text").innerHTML = "unfollow tag";
+  success.removeClass("act-success");
 }
 
 function unFollowSuccess(){
-  removeClass(success,"act-loading");
-  removeClass(success,"act-success");
+  // success.removeClass("act-loading");
+  success.removeClass("act-success");
   setTimeout(function(){
-    $("#success").removeClass("followed-tag");
-     $("#success").addClass("follow-tag");
+    success.removeClass("followed-tag");
+     success.addClass("follow-tag");
     document.getElementById("success-text").innerHTML = "follow tag";      
   },0)
 }
 
 
-var success = $("#success")
-,		addClass = function (el, cl) { el.className += ' ' + cl }
-,		removeClass = function (el, cl) { var regex = new RegExp('(?:\\s|^)' + cl + '(?:\\s|$)'); el.className = el.className.replace(regex, ' ') }
 		
 success.on("click",function(){
   if ($(this).hasClass("follow-tag")){
-	  addClass(success,"act-loading")
+    // success.addClass("act-loading");
     $.ajax({
       type: "POST",
       url: "/tag/" + currentTag + "/follow",
-      success: followSuccess()
+      success: followSuccess
     });
-  } else if ($(this).hasClass("followed-tag")) {
-    console.log("shit has followed tag!");
-    $("#success").removeClass("followed-tag");
-    addClass(success,"act-loading");
+  } else if (success.hasClass("followed-tag")) {
+    success.removeClass("followed-tag");
+    // success.addClass("act-loading");
     $.ajax({
       type: "POST",
       url: "/tag/" + currentTag + "/unfollow",
-      success: unFollowSuccess()
+      success: unFollowSuccess
     });
   }
 })
