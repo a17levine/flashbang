@@ -19,7 +19,8 @@
 //= require alertify
 //= require notificationsWithAlertifyJs
 
-// application javascripts
+// application javascripts ---
+
 //= require comments
 //= require exchanges
 //= require followedtags
