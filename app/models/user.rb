@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
         posts_with_tag = Post.tagged_with(t.name).where(active: true).sort_by(&:created_at)
         posts_with_tag.each {|p| @relevant_posts << p}
       end
-      @relevant_posts.uniq!.sort!{|a,b| b.created_at <=> a.created_at}
+      if @relevant_posts.uniq! == nil
+        return @relevant_posts.sort!{|a,b| b.created_at <=> a.created_at}
+      else
+        return @relevant_posts.uniq!.sort!{|a,b| b.created_at <=> a.created_at}
+      end
    end
 end
