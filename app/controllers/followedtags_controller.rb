@@ -6,7 +6,11 @@ class FollowedtagsController < ApplicationController
   	else
       @relevant_posts = current_user.relevant_posts
   	end
-    
+  end
+
+  def show
+    @followed_tag = FollowedTag.new
+    @followed_tags = current_user.followed_tags
   end
 
   def edit
@@ -14,15 +18,11 @@ class FollowedtagsController < ApplicationController
   end
 
   def create
-    # binding.pry
-  	# get tag from params
     @tag_name = params['name']
     @user = current_user
-    # @user.follow_tag(params[])
-  	# get user
-  	# userobject.follow_tag(text)
-    @user.follow_tag(@tag_name)
-  	render nothing: true
+    response = @user.follow_tag(@tag_name)
+    render json: response.tag
+  	# render nothing: true
   end
 
   def destroy

@@ -1,3 +1,29 @@
 // Place all the styles related to the followedtags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.single-tag {
+  background: #d0f5d6;
+  float:left;
+  clear:left;
+  padding: 8px;
+  margin: 10px;
+}
+
+.single-tag a {
+  color: #555555;
+  text-decoration: none;
+  font-family: Verdana,Arial,sans-serif;
+}
+
+#followed-tag-input {
+	display: inline;
+	width: 100px;
+	margin: 13px 10px 0px 9px;
+}
+
+.follow-tag-form {
+	float:left;
+	clear:left;
+}
