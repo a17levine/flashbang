@@ -1,5 +1,14 @@
-window.chosenPlaceUrl;
 window.chosenPlace;
+window.chosenPlaceName;
+window.chosenPlaceAddress;
+window.chosenPlaceUrl;
+
+function logPlaceVariablesToConsole(){
+  console.log("chosenPlace is", window.chosenPlace);
+  console.log("chosenPlaceName is", window.chosenPlaceName);
+  console.log("chosenPlaceAddress is", window.chosenPlaceAddress);
+  console.log("chosenPlaceUrl is", window.chosenPlaceUrl);
+};
 
 function initialize() {
   var mapOptions = {
@@ -31,7 +40,9 @@ function initialize() {
     marker.setVisible(false);
     var place = autocomplete.getPlace();
     window.chosenPlace = place;
-    window.chosenPlaceUrl = place['url'];
+    window.chosenPlaceName = window.chosenPlace.name;
+    window.chosenPlaceUrl = "http://maps.google.com/?q=" + encodeURI(chosenPlace.formatted_address);
+    console.log("place is", place);
     if (!place.geometry) {
       return;
     }
@@ -53,6 +64,8 @@ function initialize() {
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
 
+    // This code runs when you initially pick an address from Google's Autocomplete
+
     var address = '';
     if (place.address_components) {
       address = [
@@ -60,18 +73,25 @@ function initialize() {
         (place.address_components[1] && place.address_components[1].short_name || ''),
         (place.address_components[2] && place.address_components[2].short_name || '')
       ].join(' ');
+      window.chosenPlaceAddress = place.formatted_address;
+      logPlaceVariablesToConsole();
     }
 
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
     infowindow.open(map, marker);
   });
 
+  // This code runs after you drag a pin to a custom location
+
   google.maps.event.addListener(
     marker,
     'dragend',
     function() {
       window.chosenPlace = marker.getPosition();
-      window.chosenPlaceUrl = "http://maps.google.com/?q=" + marker.getPosition().toUrlValue();
+      window.chosenPlaceName = "Custom Pin";
+      window.chosenPlaceUrl = "http://maps.google.com/?q=" + chosenPlace.toUrlValue();
+      window.chosenPlaceAddress = chosenPlace.toString();
+      logPlaceVariablesToConsole();
       marker.icon.url = "http://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png";
       infowindow.setContent("<div><strong>Custom Location</strong>");
     }
