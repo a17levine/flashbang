@@ -42,7 +42,6 @@ function initialize() {
     window.chosenPlace = place;
     window.chosenPlaceName = window.chosenPlace.name;
     window.chosenPlaceUrl = "http://maps.google.com/?q=" + encodeURI(chosenPlace.formatted_address);
-    console.log("place is", place);
     if (!place.geometry) {
       return;
     }
