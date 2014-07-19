@@ -24,9 +24,21 @@
 <hr>
 
 <div class="row">
+	<a name="place"></a>
 	<h2>Place</h2>
 	<p>If needed, drag the pin to get more specific</p>
 	
+	<%= form_for [@exchange], url: "#{exchange_path(@exchange)}/saveplace", method: "post" do |f| %>
+		<%= f.text_field :id %>
+	  <%= fields_for @place do |ff| %>
+	  	<%= ff.text_field :name %>
+	    <%= ff.text_field :address %>
+	  	<%= ff.text_field :url %>
+	  <% end %>
+	  <%= f.submit "Create" %>
+	<% end %>
+
+
 	<div style="height:500px">
 		<input id="pac-input" class="controls" type="text"
 		        placeholder="Enter a location">
