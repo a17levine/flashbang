@@ -1,5 +1,7 @@
 class ExchangesController < ApplicationController
 
+	before_filter :authenticate_user!
+
 	def create
 		# get buyer and seller objects
 		# create a new exchange with them as buyers and sellers

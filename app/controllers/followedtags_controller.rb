@@ -1,5 +1,7 @@
 class FollowedtagsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   def index
   	if current_user.followed_tags.empty?
   		redirect_to followed_tags_show_path, :flash => { :notice => "you must follow tags to view posts you're following" }

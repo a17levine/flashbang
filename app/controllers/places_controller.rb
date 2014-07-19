@@ -1,4 +1,7 @@
 class PlacesController < ApplicationController
+
+  before_filter :authenticate_user!
+  
   def create
   	@exchange = Exchange.find(params[:exchange][:id].to_i)
   	@name = params[:place][:name]
