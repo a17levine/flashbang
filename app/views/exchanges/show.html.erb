@@ -29,11 +29,11 @@
 	<p>If needed, drag the pin to get more specific</p>
 	
 	<%= form_for [@exchange], url: "#{exchange_path(@exchange)}/saveplace", method: "post" do |f| %>
-		<%= f.text_field :id %>
+		<%= f.hidden_field :id %>
 	  <%= fields_for @place do |ff| %>
-	  	<%= ff.text_field :name, id: "place_name" %>
-	    <%= ff.text_field :address, id: "place_address" %>
-	  	<%= ff.text_field :url, id: "place_url" %>
+	  	<%= ff.hidden_field :name, id: "place_name" %>
+	    <%= ff.hidden_field :address, id: "place_address" %>
+	  	<%= ff.hidden_field :url, id: "place_url" %>
 	  <% end %>
 	  <%= f.submit "Create" %>
 	<% end %>
