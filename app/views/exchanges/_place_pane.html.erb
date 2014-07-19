@@ -5,6 +5,7 @@
 	<%= link_to image_tag(@exchange.place.static_map), @exchange.place.url %>
 
 <% else %>
+	<p>No location chosen</p>
 	<p>If needed, drag the pin to get more specific</p>
 	
 	<%= form_for [@exchange], url: "#{exchange_path(@exchange)}/saveplace", method: "post" do |f| %>
