@@ -10,6 +10,12 @@ function logPlaceVariablesToConsole(){
   console.log("chosenPlaceUrl is", window.chosenPlaceUrl);
 };
 
+function updatePlaceFields(){
+  $("#place_name").val(window.chosenPlaceName);
+  $("#place_address").val(window.chosenPlaceAddress);
+  $("#place_url").val(window.chosenPlaceUrl);
+}
+
 function initialize() {
   var mapOptions = {
     center: new google.maps.LatLng(30.286012, -97.73945),
@@ -74,6 +80,7 @@ function initialize() {
       ].join(' ');
       window.chosenPlaceAddress = place.formatted_address;
       logPlaceVariablesToConsole();
+      updatePlaceFields();
     }
 
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
@@ -91,6 +98,7 @@ function initialize() {
       window.chosenPlaceUrl = "http://maps.google.com/?q=" + chosenPlace.toUrlValue();
       window.chosenPlaceAddress = chosenPlace.toString();
       logPlaceVariablesToConsole();
+      updatePlaceFields();
       marker.icon.url = "http://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png";
       infowindow.setContent("<div><strong>Custom Location</strong>");
     }
