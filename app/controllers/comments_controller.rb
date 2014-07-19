@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def create
     if params[:post_id]
       comment_text = params[:comment][:text]

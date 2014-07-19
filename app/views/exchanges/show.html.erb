@@ -23,17 +23,11 @@
 
 <hr>
 
-<div class="row">
-	<h2>Place</h2>
-	<p>If needed, drag the pin to get more specific</p>
-	
-	<div style="height:500px">
-		<input id="pac-input" class="controls" type="text"
-		        placeholder="Enter a location">
-		<div id="map-canvas"></div>
+<a name="place"></a>	
+	<div class="row">
+		<h2>Place</h2>
+		<%= render "place_pane" %>
 	</div>
-</div>
-
 <hr>
 
 <div class="row"><h2>Time</h2></div>
@@ -43,4 +37,3 @@
 <div class="row"><h2>Chat</h2></div>
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDbGHvHMeIHMycjI0vN-dquD3N7kqeSRCQ&libraries=places"%>
-<%= javascript_include_tag "googlemap" %>

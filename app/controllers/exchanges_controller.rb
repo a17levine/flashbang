@@ -1,5 +1,7 @@
 class ExchangesController < ApplicationController
 
+	before_filter :authenticate_user!
+
 	def create
 		# get buyer and seller objects
 		# create a new exchange with them as buyers and sellers
@@ -14,7 +16,7 @@ class ExchangesController < ApplicationController
 		# load objects
 		@buyer = @exchange.buyer
 		@seller = @exchange.seller
-		@place = Place.new 
+		@place = Place.new
 		# security: make sure only buyer or seller is viewing.
 		#   otherwise return to root path with a message
 	end

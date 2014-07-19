@@ -1,0 +1,37 @@
+<% if @exchange.place %>
+	<h3><%= link_to @exchange.place.name, @exchange.place.url %></h3>
+	<p><%= @exchange.place.address %></p>
+	<%= link_to image_tag(@exchange.place.static_map), @exchange.place.url %>
+	<% if @exchange.seller == current_user %>
+		<p><%= link_to "Change location", exchange_removeplace_path(@exchange), :exchange_id => @exchange.id%></p>
+	<% end %>
+<% else %>
+	<% if @exchange.seller == current_user %>
+		<p>You the seller, choose where to exchange!</p>
+		<p>If needed, <strong>drag the pin</strong> to get more specific</p>	
+		<%= form_for [@exchange], url: "#{exchange_path(@exchange)}/saveplace", method: "post" do |f| %>
+			<%= f.hidden_field :id %>
+		  <%= fields_for @place do |ff| %>
+		  	<%= ff.hidden_field :name, id: "place_name" %>
+		    <%= ff.hidden_field :address, id: "place_address" %>
+		  	<%= ff.hidden_field :url, id: "place_url" %>
+		  <% end %>
+		  <%= f.submit "save place", :class => "button" %>
+		<% end %>
+
+		<div style="height:500px">
+			<input id="pac-input" class="controls" type="text"
+			        placeholder="Enter a location">
+			<div id="map-canvas"></div>
+		</div>
+	<% else %>
+		<p><%= @exchange.seller.first_name %> has not chosen a location yet.</p>
+	<% end %>
+
+<% end %>
+
+
+
+
+
+

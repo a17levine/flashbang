@@ -1,4 +1,7 @@
 class OffersController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def new
     @offer = Offer.new
   end
