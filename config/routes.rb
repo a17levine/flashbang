@@ -18,6 +18,7 @@ Flashbang::Application.routes.draw do
 
   resources :exchanges, only: [:show, :create] do
     post '/saveplace' => 'places#create', :as => "exchange_places"
+    get '/removeplace' => 'places#destroy'
   end
 
   # user-level routes -------

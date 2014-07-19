@@ -18,4 +18,15 @@ class PlacesController < ApplicationController
   		redirect_to "#{exchange_path(@exchange)}#place", :flash => { :notice => "location updated" }
   	end
   end
+
+  def destroy
+    @exchange = Exchange.find(params[:exchange_id].to_i)
+    if @exchange.seller == current_user
+      @exchange.place = nil
+      @exchange.save
+      redirect_to "#{exchange_path(@exchange)}#place", :flash => { :alert => "location removed" }
+    else
+      redirect_to "#{exchange_path(@exchange)}#place", :flash => { :error => "something went wrong" }
+    end
+  end
 end
