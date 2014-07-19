@@ -1,0 +1,20 @@
+<div class="row">
+	<h1>Follow Tags</h1>
+	<h3>Tags you are following</h3>
+	
+	<div class="followed-tags">
+		<% @followed_tags.each do |ft| %>
+			<div class="single-tag">
+				<a href="#">#<%= ft.tag.name %></a>
+			  <a class="ui-icon-close unfollow-x-button" href="#">x</a>
+			</div>
+			<br>
+		<% end %>
+	</div>
+	<br><br>
+	<div class="follow-tag-form">
+		<span>#</span><input id="followed-tag-input" type="text" autofocus placeholder="tag" />
+		<a class="button small" id="follow-tag-button">follow</a>
+	</div>
+
+</div>

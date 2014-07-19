@@ -6,6 +6,7 @@ class Tag < ActiveRecord::Base
   private
 
   def cleanup_tags
-    self.name.gsub(/#/, '')
+    self.name.gsub(/#/, '') # remove hashtag
+    self.name.downcase! # lowercase
   end
 end

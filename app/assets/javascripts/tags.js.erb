@@ -1,0 +1,41 @@
+var success = $("#success");
+
+function followSuccess(){
+  // success.removeClass("act-loading");
+  success.addClass("act-success");
+  success.addClass("followed-tag");
+  success.removeClass("follow-tag");
+  document.getElementById("success-text").innerHTML = "unfollow tag";
+  success.removeClass("act-success");
+}
+
+function unFollowSuccess(){
+  // success.removeClass("act-loading");
+  success.removeClass("act-success");
+  setTimeout(function(){
+    success.removeClass("followed-tag");
+     success.addClass("follow-tag");
+    document.getElementById("success-text").innerHTML = "follow tag";      
+  },0)
+}
+
+
+		
+success.on("click",function(){
+  if ($(this).hasClass("follow-tag")){
+    // success.addClass("act-loading");
+    $.ajax({
+      type: "POST",
+      url: "/tag/" + currentTag + "/follow",
+      success: followSuccess
+    });
+  } else if (success.hasClass("followed-tag")) {
+    success.removeClass("followed-tag");
+    // success.addClass("act-loading");
+    $.ajax({
+      type: "POST",
+      url: "/tag/" + currentTag + "/unfollow",
+      success: unFollowSuccess
+    });
+  }
+})

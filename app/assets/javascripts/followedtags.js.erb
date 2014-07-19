@@ -1,0 +1,45 @@
+function followTagSucceeded(e){
+  var tagNameFromServer =  e.name;
+  // add element to screen 
+  var html = "<div class='single-tag'><a href='#'>#" + tagNameFromServer +"</a><a class='ui-icon-close unfollow-x-button' href='#'>x</a></div><br>";
+  $(".followed-tags").append(html);
+}
+
+function followTagErrored(){
+  console.log("tag not posted, error!")
+}
+
+function unFollowTagSucceeded(){
+  elementSelected.hide();
+}
+
+function unFollowTagErrored(){
+  console.log("error!, tag was not succesfully unfollowed")
+}
+
+var followTagButton = $("#follow-tag-button");
+var unfollowTagButton = $(".followed-tags").find($(".unfollow-x-button"));
+var elementSelected;
+
+followTagButton.on("click", function(){
+  var currentTag = $("#followed-tag-input").val();
+  $.ajax({
+      type: "POST",
+      url: "/tag/" + currentTag + "/follow",
+      success: followTagSucceeded,
+      error: followTagErrored
+    });
+});
+
+
+$(".followed-tags").delegate(".unfollow-x-button", "click", function(e){
+  e.preventDefault();
+  elementSelected = $(this).parent();
+  var tagSelected = elementSelected.children().first().text().slice(1);
+  $.ajax({
+      type: "POST",
+      url: "/tag/" + tagSelected + "/unfollow",
+      success: unFollowTagSucceeded,
+      error: unFollowTagErrored
+    });
+});

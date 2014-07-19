@@ -37,7 +37,7 @@ class Notifier < ActionMailer::Base
   def notify_post_followers_when_owner_comments(comment)
     @post = comment.commentable
     @comment = comment
-    @post_followers_set = @post.followers
+    @post_followers_set = @post.followers || Set.new
     attach_post_picture
     unless @post_followers_set.empty?
       @post_followers_set.each do |user|
