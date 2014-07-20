@@ -14,6 +14,8 @@ function updatePlaceFields(){
   $("#place_name").val(window.chosenPlaceName);
   $("#place_address").val(window.chosenPlaceAddress);
   $("#place_url").val(window.chosenPlaceUrl);
+  $("#save-place-button").css('visibility', 'visible');
+  $("#save-place-button").trigger("mouseover");
 }
 
 function initialize() {
