@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 	def create
 		@post = current_user.posts.new(post_params)
 		if @post.save
-			Notifier.send_new_post_uploaded_email(current_user, @post).deliver
+			Notifier.delay.send_new_post_uploaded_email(current_user, @post)
 			redirect_to post_path(@post), :flash => { :notice => "post uploaded successfully" }
 		else
 		end

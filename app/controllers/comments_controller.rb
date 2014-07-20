@@ -21,9 +21,9 @@ class CommentsController < ApplicationController
 
   def dispatch_comment_mailer
     if current_user == @post.user
-      Notifier.notify_post_followers_when_owner_comments(@comment)
+      Notifier.delay.notify_post_followers_when_owner_comments(@comment)
     else
-      Notifier.notify_seller_of_comment_on_post(@comment)
+      Notifier.delay.notify_seller_of_comment_on_post(@comment)
     end
   end
 
