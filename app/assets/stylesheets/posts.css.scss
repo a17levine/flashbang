@@ -87,6 +87,16 @@ footer {
   background:none;
 }
 
+.everyone-else-label {
+  float: left;
+  margin-left: 181px;
+}
+
+.post-owner-label {
+  float: right;
+  margin-right: 181px;
+}
+
 // comments -----------------
 
 .comment-bubble {
@@ -154,10 +164,15 @@ footer {
 
 .comment-content {
   padding: 9px 14px;
+  color: rgb(255, 255, 255);
 }
 
 .comment-content p {
-  color: rgb(255, 255, 255);
   font: normal normal normal 14px/20px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: 0px 0px 10px;
 }
+
+#comment_text {
+  max-width: 500px;
+}
+
