@@ -19,7 +19,13 @@ class Notifier < ActionMailer::Base
     :subject => "Thank you for posting your #{effective_post_name} to Flashbang" )
   end
 
-  def notify_user_of_post_that_matches_followed_tag(post,tag)
+  def notify_user_of_post_that_matches_followed_tag(user,post,tag)
+    @post = post
+    @user = user
+    @tag = tag
+    attach_post_picture
+    mail( :to => @user.email,
+    :subject => "##{@tag.name} just posted on Flashbang!" )
   end
 
   # Comment-related mailers ----
@@ -31,7 +37,7 @@ class Notifier < ActionMailer::Base
     @owner = @post.user
     attach_post_picture
     mail( :to => @owner.email,
-      :subject => "New comment on #{effective_post_name} // Flashbang" ).deliver
+      :subject => "New comment on #{effective_post_name} // Flashbang" )
   end
 
   def notify_post_followers_when_owner_comments(comment)
@@ -42,7 +48,7 @@ class Notifier < ActionMailer::Base
     unless @post_followers_set.empty?
       @post_followers_set.each do |user|
         mail( :to => user.email,
-      :subject => "Seller comment on #{effective_post_name} posted // Flashbang" ).deliver
+      :subject => "Seller comment on #{effective_post_name} posted // Flashbang" )
       end
     end
   end

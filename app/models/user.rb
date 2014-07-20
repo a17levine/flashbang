@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
       if @relevant_posts.uniq == nil
         return @relevant_posts.sort!{|a,b| b.created_at <=> a.created_at}
       else
-        return @relevant_posts.uniq!.sort!{|a,b| b.created_at <=> a.created_at}
+        return @relevant_posts.uniq.sort!{|a,b| b.created_at <=> a.created_at}
       end
    end
 end
