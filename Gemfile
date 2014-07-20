@@ -42,4 +42,6 @@ gem 'acts-as-taggable-on'
 gem 'jbuilder', '~> 1.2'
 gem 'googlestaticmap'
 gem 'sidekiq'
+gem "mini_magick"
+
 
