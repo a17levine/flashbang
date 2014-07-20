@@ -5,7 +5,7 @@
 	<div class="followed-tags">
 		<% @followed_tags.each do |ft| %>
 			<div class="single-tag">
-				<a href="#">#<%= ft.tag.name %></a>
+				<%= link_to "##{ft.tag.name}", tag_path(ft.tag.name) %>
 			  <a class="ui-icon-close unfollow-x-button" href="#">x</a>
 			</div>
 			<br>
