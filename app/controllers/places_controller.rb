@@ -10,7 +10,7 @@ class PlacesController < ApplicationController
   	@place = Place.new(name: @name, address: @address, url: @url)
   
   	if @exchange.seller == current_user
-  		@place = Place.where(:address => @address).first_or_create do |p|
+  		@place = Place.where(:name => @name, :address => @address).first_or_create do |p|
   			p.attributes = {name: @name, address: @address, url: @url}
   		end
   		@exchange.place_id = @place.id
