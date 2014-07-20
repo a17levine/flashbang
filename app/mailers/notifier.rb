@@ -19,7 +19,13 @@ class Notifier < ActionMailer::Base
     :subject => "Thank you for posting your #{effective_post_name} to Flashbang" )
   end
 
-  def notify_user_of_post_that_matches_followed_tag(post,tag)
+  def notify_user_of_post_that_matches_followed_tag(user,post,tag)
+    @post = post
+    @user = user
+    @tag = tag
+    attach_post_picture
+    mail( :to => @user.email,
+    :subject => "##{@tag.name} just posted on Flashbang!" )
   end
 
   # Comment-related mailers ----

@@ -69,6 +69,16 @@ class Post < ActiveRecord::Base
 		end
 	end
 
+	def unique_users_following_this_posts_tags
+		@unique_users_following_this_posts_tags = Set.new
+		self.tags.each do |pt|
+			FollowedTag.where(tag_id: pt.id).each do |ft|
+				 @unique_users_following_this_posts_tags << ft.user
+			end
+		end
+		return @unique_users_following_this_posts_tags
+	end
+
 
 	private
 
