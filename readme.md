@@ -28,7 +28,7 @@
 2. before running project in development, run `mailcatcher` in your terminal window to launch the development mail server
 3. Check `http://localhost:1080/` for mail sent by the app
 
-**Sidekiq**
+**Sidekiq & Redis**
 
 1. Before installing Sidekiq, be sure to install Redis. `brew install redis`
 2. Sidekiq needs to be on for Sidekiq to work. In it's own window, launch `redis-server`
