@@ -3,7 +3,9 @@
 <div class='row latest-posts'>
 	<div>
 		<h1 class="large-offset-3">following</h1>	
-		<%= link_to "edit tags", followed_tags_show_path, :class => "large-offset-3" %>
+		<div class="large-offset-3">
+			<%= link_to "edit", followed_tags_show_path, :class => "button tiny" %>
+		</div>
 	</div>
 	
 	<% if @relevant_posts.nil? %>

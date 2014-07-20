@@ -2,7 +2,7 @@
 
 <div class='row'>
 	<div>
-		<h2 class="large-offset-3">listed price <%= number_to_currency(@post.price, precision: 0) %></h2>	
+		<h1 class="large-offset-3">asking price <%= number_to_currency(@post.price, precision: 0) %></h1>	
 	</div>
 </div>	
 
@@ -12,7 +12,10 @@
 	</div>
 </div>
 
+<hr>
+
 <div class="row tag-box">
+	<h2>tags</h2>
 	<ul id="mytags" class="tagit ui-widget ui-widget-content ui-corner-all show-tags">
 		<% @post.tags.each do |t| %>
 			<%= link_to(tag_path(t.name)) do %>
@@ -24,15 +27,18 @@
   </ul>
 </div>
 
+<hr>
+
 <div class="row">
+	<h2>offers</h2>
 	<% if @post.offer_accepted? %>
 		<p>An offer has been accepted at <%= number_to_currency(@post.max_offer.amount, precision: 0) %></p>
 		
 	<% else %>
 		<% if offers_been_made? %>
-			<h1>Best offer: <%= number_to_currency(@post.max_offer.amount, precision: 0) %></h1>	
+			<h4>Best offer: <%= number_to_currency(@post.max_offer.amount, precision: 0) %></h4>	
 		<% else %>	
-			<h1>No offers yet</h1>
+			<h4>none yet</h4>
 		<% end %>
 
 		<% if @post.user == current_user %>
@@ -55,11 +61,19 @@
 <!-- Begin comments and comment posting  -->
 
 <div class="row comments">
-	<!-- <h3>Comments</h3> -->
-	<% @post.comments.each do |c| %>
-		<% unless c.id.nil? %>
-			<%= render partial: "comment", locals: {comment: c, post: @post} %>
-		<% end %>	
+	<h2>comments</h2>
+	<% if @post.comments.count == 0 %>
+		<h4>none yet</h4>
+	<% else %>
+		<div class="row">
+			<div class="everyone-else-label"><p>everyone else</p></div>
+			<div class="post-owner-label"><p>post owner</p></div>
+		</div>
+		<% @post.comments.each do |c| %>
+			<% unless c.id.nil? %>
+				<%= render partial: "comment", locals: {comment: c, post: @post} %>
+			<% end %>	
+		<% end %>
 	<% end %>
 </div>
 
@@ -68,6 +82,6 @@
 <div class="row comment-post" style="margin-top:30px">
 	<%= form_for [@user, @post, @comment] do |f| %>
 		<%= f.text_field :text, :autofocus => true, :placeholder => "write a comment" %>
-		<%= f.submit "submit" %>
+		<%= f.submit "comment", :class => "button" %>
 	<% end %>
 </div>

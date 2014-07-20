@@ -27,3 +27,11 @@
 	float:left;
 	clear:left;
 }
+
+/*------Validation Styles ------*/
+
+/*#input:pattern:invalid {
+  background: green;
+}*/
+
+input:invalid + span::after { content: ' ⨉'; }

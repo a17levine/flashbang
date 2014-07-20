@@ -24,7 +24,12 @@ class User < ActiveRecord::Base
    end
 
    def follow_tag(tag_text)
-     self.followed_tags.create(tag: Tag.find_or_create_by_name(tag_text))
+     tag = Tag.find_or_create_by_name(tag_text)
+     if tag.id != nil
+      self.followed_tags.create(tag: tag)
+     else
+      return false
+     end
    end
 
    def unfollow_tag(tag_text)
