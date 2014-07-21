@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608175508) do
+ActiveRecord::Schema.define(version: 20140721001011) do
 
   create_table "comments", force: true do |t|
     t.string   "text"
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 20140608175508) do
     t.datetime "updated_at"
   end
 
+  create_table "meetings", force: true do |t|
+    t.integer  "exchange_id"
+    t.integer  "time_block_id"
+    t.boolean  "planned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "meetings", ["exchange_id"], name: "index_meetings_on_exchange_id"
+  add_index "meetings", ["time_block_id"], name: "index_meetings_on_time_block_id"
+
   create_table "networks", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -68,7 +79,7 @@ ActiveRecord::Schema.define(version: 20140608175508) do
   create_table "places", force: true do |t|
     t.string   "name"
     t.string   "url"
-    t.string   "address"  
+    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -103,6 +114,15 @@ ActiveRecord::Schema.define(version: 20140608175508) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "time_blocks", force: true do |t|
+    t.datetime "start_time"
+    t.integer  "meeting_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "time_blocks", ["meeting_id"], name: "index_time_blocks_on_meeting_id"
 
   create_table "users", force: true do |t|
     t.string   "first_name"

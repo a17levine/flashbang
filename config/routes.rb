@@ -1,4 +1,12 @@
 Flashbang::Application.routes.draw do
+  get "meetings/new"
+  get "meetings/create"
+  get "meetings/destroy"
+  get "meetings/choose_time"
+  get "exchange_meetings/new"
+  get "exchange_meetings/create"
+  get "exchange_meetings/destroy"
+  get "exchange_meetings/choose_time"
   get "places/create"
   devise_for :users
 

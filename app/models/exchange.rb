@@ -4,4 +4,5 @@ class Exchange < ActiveRecord::Base
   belongs_to :post
   belongs_to :place
   has_many :comments, as: :commentable
+  has_one :meeting
 end
