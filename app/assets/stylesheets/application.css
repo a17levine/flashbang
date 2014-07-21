@@ -15,5 +15,6 @@
  *= require alertify.core.css
  *= require alertify.default.css
  *= require alertify_overrides
+ *= require font-awesome
  *= require_tree .
  */

@@ -1,3 +1,289 @@
-// Place all the styles related to the Meetings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.row {
+  margin: 0 auto !important;
+}
+
+.header {
+  // margin: 0;
+  // padding: 0;
+  padding-top: 5px;
+}
+
+.subheader{
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: -0.5px
+}
+
+.inner-wrapper {
+  margin: 0 auto;
+  width: 255px;
+  overflow: hidden;
+  float: left;
+}
+
+.outer-wrapper {
+  margin: 0 auto;
+  width: 400px;
+}
+
+.clear{
+  .clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+  }
+}
+
+div.icon-div {
+  width: 90px;
+  height: 55px;
+  display: inline-block;
+  float: left;
+}
+
+.icon-chevron-sign-left {
+  display: inline-block;
+  margin: 10px;
+  margin-right: 15px;
+  float: left;
+  text-shadow: 4px 4px 4px #bbb;
+}
+
+.icon-chevron-sign-right {
+  display: inline-block;
+  margin: 10px;
+  float: left;
+  text-shadow: 4px 4px 4px #bbb;
+}
+
+.day_header {
+  margin: 5px auto;
+  text-align: center;
+}
+
+.hour {
+  width: 90%;
+  height: 26px;
+  border: 1px solid #AAA;
+  border-bottom: none;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 26px;
+  font-size: 14px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+div.hour:nth-of-type(1) {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top: 2px solid black;
+}
+
+.hour:last-child {
+  border-bottom: 2px solid black;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.day {
+  // border: 1px solid red;
+  width: 250px;
+  padding: 10px 0;
+  margin: 0 auto;
+  display: inline-block;
+  border-radius: 8px;
+  float: left;
+}
+
+@-webkit-keyframes flyinright {
+  0%{margin-left: 400px;
+     margin-right: -400px;}
+  100%{margin-left: auto;
+       margin-right: auto;}
+}
+
+@-webkit-keyframes flyoutright {
+  0%{margin-left: 0;
+     margin-right: 0;}
+  100%{margin-left: 400px;
+       margin-right: -400px;}
+}
+
+@-webkit-keyframes flyinleft {
+  0%{
+    margin-left: -400px;
+    margin-right: 400px;}
+  100%{
+    margin-left: auto;
+    margin-right: auto;}
+}
+
+@-webkit-keyframes flyoutleft {
+  0%{
+    margin-left: auto;
+    margin-right: auto;}
+  100%{
+    margin-left: -400px;
+    margin-right: 400px;}
+}
+
+
+
+.slideToLeft{
+  -webkit-animation-name: flyoutleft;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear; 
+}
+
+.slideToRight{
+  -webkit-animation-name: flyoutright;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+}
+
+.slideFromLeft{
+  -webkit-animation-name: flyinleft;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+}
+
+.slideFromRight{
+  -webkit-animation-name: flyinright;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+}
+
+.schedule {
+	width: 100%;
+  min-width: 500px;
+}
+
+//makes the monthly calendar cursor a pointer
+p.ui-state-default {
+  cursor: pointer;
+}
+
+div.ui-selecting {
+	background-color: gray;
+  transition: background-color 300ms linear;
+}
+
+div.ui-selected {
+	background-color: #BF64FC;
+  font-weight: bold;
+  transition: background-color 300ms linear;
+}
+
+div.ignore {
+  background-color: #E4DFDF;
+}
+
+/*Submit area*/
+
+.inputs {
+  margin-top: 25px;
+}
+
+div.submit {
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+p.errors {
+  display: none;
+  color: red;
+}
+
+.rightcontent {
+  float: left;
+}
+
+/*DATEPICKER*/
+
+#datepicker {
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+table.ui-datepicker-calendar {
+  border: none;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+}
+
+.ui-icon.ui-icon-circle-triangle-e,
+.ui-icon.ui-icon-circle-triangle-w {
+  display: none;
+}
+
+.ui-datepicker-calendar {
+  margin: 0 auto;
+}
+
+.ui-datepicker tbody td {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+}
+
+table tr {
+  background: #fff !important;
+}
+
+p.ui-state-default {
+  margin-right: 0;
+  margin: 0;
+  padding: 2px 23px 2px 5px;
+  width: 21px;
+  text-align: center;
+}
+
+p.ui-state-active {
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  padding: 1px 21px 1px 4px;
+}
+
+.selectedDate p{
+  // font-weight: bold;
+  color: white;
+  width: 1.6em;
+  background-color: #BF64FC;
+  // font-size: 15px;
+  border-radius: 5px;
+}
+
+.hostEmail {
+  height: 40px !important;
+  border-radius: 5px !important;
+  font-size: 25px !important;
+}
+
+.guestEmail {
+  height: 30px !important;
+  border-radius: 5px !important;
+}
+
+.day_helper {
+  text-align: center;
+}
+
+textarea {
+  // width: 65%;
+  font-size: 40px;
+  display: inline-block;
+  resize: none;
+}
+
+
+

@@ -29,8 +29,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'jquery-ui-rails'
+gem 'foundation-icons-sass-rails'
+gem "font-awesome-rails"
 gem 'sass-rails', '~> 4.0.0'
+gem 'jquery-ui-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -43,5 +45,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'googlestaticmap'
 gem 'sidekiq'
 gem "mini_magick"
+gem 'haml'
+gem 'icalendar'
 
 

@@ -18,6 +18,16 @@
 //= require tagging
 //= require alertify
 //= require notificationsWithAlertifyJs
+//= require moment.min
+//= require moment-timezone.min
+
+// from blocktalk - not sure if I need yet
+
+//= require jquery.ui.selectable
+//= require jquery.ui.datepicker
+//= require jquery.mousewheel-3.0.6.pack
+//= require jquery.zclip
+
 
 // application javascripts ---
 
@@ -29,6 +39,8 @@
 //= require posts
 //= require static_pages
 //= require tags
+//= require meetings
+
 
 $(function(){ $(document).foundation({
   tooltip: {
