@@ -87,7 +87,9 @@ class Post < ActiveRecord::Base
 		end
 	end
 
-	
+	def expiration_date
+		self.created_at + 45.days
+	end
 
 
 	private
