@@ -28,6 +28,14 @@ class Notifier < ActionMailer::Base
     :subject => "##{@tag.name} just posted on Flashbang!" )
   end
 
+  def notify_user_of_post_expiring(post)
+    @post = post
+    @user = post.user
+    attach_post_picture
+    mail( :to => @user.email,
+    :subject => "Your #{effective_post_name} has expired" )
+  end
+
   # Comment-related mailers ----
 
   def notify_seller_of_comment_on_post(comment)

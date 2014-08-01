@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	<%= image_tag attachments['logo-small.png'].url %>
+    <h1>Your <%= hashtagify_and_linkify_tag_list(@post.tags.take(1)) %> has expired</h1>
+    <p>Listed price: <%= number_to_currency(@post.price, precision: 0) %></p>
+		<p>Tags: <%= hashtagify_and_linkify_tag_list(@post.tags)%></p>
+    <%= image_tag attachments['post_image.jpg'].url %>
+  </body>
+</html>

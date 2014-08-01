@@ -79,6 +79,16 @@ class Post < ActiveRecord::Base
 		return @unique_users_following_this_posts_tags
 	end
 
+	def expire
+		@old_post = self
+		@old_post.active = false
+		if @old_post.save
+			Notifier.delay.notify_user_of_post_expiring(@old_post)
+		end
+	end
+
+	
+
 
 	private
 
