@@ -15,6 +15,7 @@ class PlacesController < ApplicationController
   		end
   		@exchange.place_id = @place.id
   		@exchange.save
+      Notifier.delay.notify_buyer_of_exchange_location(@exchange)
   		redirect_to "#{exchange_path(@exchange)}#place", :flash => { :notice => "location updated" }
   	end
   end

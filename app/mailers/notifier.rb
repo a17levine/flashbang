@@ -61,22 +61,6 @@ class Notifier < ActionMailer::Base
     end
   end
 
-  def notify_other_party_of_comment_on_exchange(current_user, comment)
-    @comment = comment
-    @post = @comment.commentable.post
-    @current_user = current_user
-    @exchange = @comment.commentable
-
-    if @current_user == @comment.commentable.buyer
-      @user_to_notify = @comment.commentable.seller
-    else
-      @user_to_notify = @comment.commentable.buyer
-    end
-
-    attach_post_picture
-    mail( :to => @user_to_notify.email,
-    :subject => "New comment on exchange of #{effective_post_name} // Flashbang" )
-  end
 
   # Offer-related mailers ----
 
@@ -129,6 +113,36 @@ class Notifier < ActionMailer::Base
     end
   end
 
+  # Exchange lifecycle mailers ---
+
+  def notify_other_party_of_comment_on_exchange(current_user, comment)
+    @comment = comment
+    @post = @comment.commentable.post
+    @current_user = current_user
+    @exchange = @comment.commentable
+
+    if @current_user == @comment.commentable.buyer
+      @user_to_notify = @comment.commentable.seller
+    else
+      @user_to_notify = @comment.commentable.buyer
+    end
+
+    attach_post_picture
+    mail( :to => @user_to_notify.email,
+    :subject => "New comment on exchange of #{effective_post_name} // Flashbang" )
+  end
+
+  def notify_buyer_of_exchange_location(exchange)
+    @exchange = exchange
+    @buyer = exchange.buyer
+    @post = @exchange.post
+    @place = @exchange.place
+    attach_post_picture
+    attach_map_image
+    mail( :to => @buyer.email,
+    :subject => "Location updated for exchange of #{effective_post_name} // Flashbang" )
+  end
+
   # Misc mailers ----
 
   def notify_admin_of_something(description)
@@ -143,6 +157,10 @@ class Notifier < ActionMailer::Base
   def load_common_assets
     # potential bug - this is tied to JPG
     attachments.inline['logo-small.png'] = File.read("#{Rails.root}/app/assets/images/logo-small.png")
+  end
+
+  def attach_map_image
+    attachments.inline['map_image.jpg'] = @place.get_map_image
   end
 
 end

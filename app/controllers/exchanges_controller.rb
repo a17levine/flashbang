@@ -10,10 +10,8 @@ class ExchangesController < ApplicationController
 	end
 
 	def show
-		# get exchange from db
-		# binding.pry
 		@exchange = Exchange.find(params["id"].to_i)
-		# load objects
+		@post = @exchange.post
 		@buyer = @exchange.buyer
 		@seller = @exchange.seller
 		@place = Place.new
@@ -23,9 +21,6 @@ class ExchangesController < ApplicationController
 		#   otherwise return to root path with a message
 	end
 
-
-	# this method shows the user a table of 
-	# all exchanges related to them
 
 	def index
 		@user_exchanges = User.find(params["user_id"].to_i).exchanges

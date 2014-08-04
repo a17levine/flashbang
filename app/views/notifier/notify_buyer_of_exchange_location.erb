@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	<%= image_tag attachments['logo-small.png'].url %>
+		<h1>Exchange location updated for  <%= effective_post_name %> // Flashbang</h1>
+		<h3><%= @place.name %></h3>
+    <p><%= @place.address %></p>
+    <%= image_tag attachments['map_image.jpg'].url, :style => "display:block" %>
+		<%= link_to "View exchange on Flashbang", exchange_url(@exchange)%>
+		<%= image_tag attachments['post_image.jpg'].url, :style => "display:block" %>
+  </body>
+</html>
