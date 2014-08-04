@@ -17,6 +17,8 @@ class ExchangesController < ApplicationController
 		@buyer = @exchange.buyer
 		@seller = @exchange.seller
 		@place = Place.new
+		@user = current_user
+		@comment = @exchange.comments.new
 		# security: make sure only buyer or seller is viewing.
 		#   otherwise return to root path with a message
 	end

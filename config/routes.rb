@@ -17,6 +17,7 @@ Flashbang::Application.routes.draw do
   get 'posts/:id' => 'posts#show', :as => "post"
 
   resources :exchanges, only: [:show, :create] do
+    resources :comments
     post '/saveplace' => 'places#create', :as => "exchange_places"
     get '/removeplace' => 'places#destroy'
   end

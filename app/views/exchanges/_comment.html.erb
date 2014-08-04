@@ -1,0 +1,22 @@
+<div class="row comment">
+	<% if comment.user == @exchange.buyer %>
+		<div class="comment-bubble-right">
+		  <div class="arrow-right"></div>
+		  <h3 class="comment-title"><%= comment.user.first_name %> </h3>
+		  <div class="comment-content">
+		    <p><%= comment.text %></p>
+		  <small><%= time_ago_in_words(comment.created_at).gsub('about','') %> ago</small>
+		  </div>
+		</div>
+	<% else %>
+		<div class="comment-bubble-left">
+		  <div class="arrow-left"></div>
+		  <h3 class="comment-title"><%= comment.user.first_name %></h3>
+		  <div class="comment-content">
+		    <p><%= comment.text %></p>
+		  <small><%= time_ago_in_words(comment.created_at).gsub('about','') %> ago</small>
+		  </div>
+		</div>
+	<% end %>
+
+</div>

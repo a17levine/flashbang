@@ -34,6 +34,30 @@
 
 <hr>
 
-<div class="row"><h2>Chat</h2></div>
+<div class="row comments">
+	<h2>Chat</h2>
+	<% if @exchange.comments.count == 0 %>
+		<h4>none yet</h4>
+	<% else %>
+		<div class="row">
+			<div class="everyone-else-label"><p>seller</p></div>
+			<div class="post-owner-label"><p>buyer</p></div>
+		</div>
+		<% @exchange.comments.each do |c| %>
+			<% unless c.id.nil? %>
+				<%= render partial: "comment", locals: {comment: c, post: @exchange} %>
+			<% end %>	
+		<% end %>
+	<% end %>
+</div>
+
+<!-- Post a comment stuff -->
+
+<div class="row comment-post" style="margin-top:30px">
+	<%= form_for [@exchange, @comment] do |f| %>
+		<%= f.text_field :text, :autofocus => true, :placeholder => "write a comment" %>
+		<%= f.submit "comment", :class => "button" %>
+	<% end %>
+</div>
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDbGHvHMeIHMycjI0vN-dquD3N7kqeSRCQ&libraries=places"%>

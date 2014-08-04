@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	<%= image_tag attachments['logo-small.png'].url %>
+		<h1>New comment on the exchange of the <%= effective_post_name %></h1>
+		<h3><%= @user_to_notify.first_name %> said:</h3>
+		<p><%= @comment.text %></p>
+		<%= link_to "View comment on Flashbang", exchange_url(@exchange)%>
+		<%= image_tag attachments['post_image.jpg'].url %>
+  </body>
+</html>

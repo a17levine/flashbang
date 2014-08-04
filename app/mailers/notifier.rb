@@ -61,7 +61,21 @@ class Notifier < ActionMailer::Base
     end
   end
 
-  def notify_other_party_of_comment_on_exchange()
+  def notify_other_party_of_comment_on_exchange(current_user, comment)
+    @comment = comment
+    @post = @comment.commentable.post
+    @current_user = current_user
+    @exchange = @comment.commentable
+
+    if @current_user == @comment.commentable.buyer
+      @user_to_notify = @comment.commentable.seller
+    else
+      @user_to_notify = @comment.commentable.buyer
+    end
+
+    attach_post_picture
+    mail( :to => @user_to_notify.email,
+    :subject => "New comment on exchange of #{effective_post_name} // Flashbang" )
   end
 
   # Offer-related mailers ----
