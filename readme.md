@@ -32,3 +32,5 @@
 
 1. Before installing Sidekiq, be sure to install Redis. `brew install redis`
 2. Sidekiq needs to be on for Sidekiq to work. In it's own window, launch `redis-server`
+3. Launch Sidekiq in its own terminal window with `bundle exec sidekiq`
+

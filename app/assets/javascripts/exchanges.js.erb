@@ -82,6 +82,7 @@ function initialize() {
       ].join(' ');
       window.chosenPlaceAddress = place.formatted_address;
       updatePlaceFields();
+      logPlaceVariablesToConsole();
     }
 
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);

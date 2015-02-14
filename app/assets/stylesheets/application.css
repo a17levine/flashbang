@@ -9,8 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_and_overrides
- *= require jquery.ui.all
+ *= require foundation
+ *= require jquery-ui
  *= require jquery.tagit
  *= require alertify.core.css
  *= require alertify.default.css
